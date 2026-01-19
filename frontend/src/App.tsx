@@ -34,7 +34,7 @@ function App() {
 
 export default App
 
-import Header from "./features/header/Header";
+import Header from "./component/header/header.tsx";
 
 function App() {
   return (
