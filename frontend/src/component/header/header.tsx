@@ -5,10 +5,14 @@ interface HeaderProps {
   title?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ title = "Welcome to Research Realm" }) => {
+const Header: React.FC<HeaderProps> = ({ title = "Research Realm" }) => {
   return (
     <header style={headerStyle}>
-      <h1 style={titleStyle}>{title}</h1>
+      <div>
+        <h1 style={titleStyle}>{title}</h1>
+        <p style={taglineStyle}>Discover. Learn. Research.</p>
+      </div>
+
       <nav style={navStyle}>
         <a href="/" style={linkStyle}>Home</a>
         <a href="/archive" style={linkStyle}>Archive</a>
@@ -18,10 +22,13 @@ const Header: React.FC<HeaderProps> = ({ title = "Welcome to Research Realm" }) 
   );
 };
 
-// Inline styles
+// =====================
+// Inline Styles
+// =====================
+
 const headerStyle: React.CSSProperties = {
-  backgroundColor: "#F5E7C6", // soft cream background
-  color: "#333",              // dark text for contrast
+  backgroundColor: "#0F172A", // Dark blue
+  color: "#FFFFFF",
   padding: "1rem 2rem",
   display: "flex",
   justifyContent: "space-between",
@@ -30,18 +37,30 @@ const headerStyle: React.CSSProperties = {
 
 const titleStyle: React.CSSProperties = {
   margin: 0,
-  fontSize: "1.8rem",
+  fontFamily: "'Poppins', sans-serif",
+  fontSize: "32px", // 28px – 36px
+  fontWeight: 700,  // 600 – 700
+};
+
+const taglineStyle: React.CSSProperties = {
+  margin: 0,
+  fontFamily: "'Poppins', sans-serif",
+  fontSize: "14px",
+  fontWeight: 500,
+  color: "#38BDF8", // Sky blue accent
 };
 
 const navStyle: React.CSSProperties = {
   display: "flex",
-  gap: "1rem",
+  gap: "1.5rem",
 };
 
 const linkStyle: React.CSSProperties = {
-  color: "#333",       // readable on cream background
-  textDecoration: "none",
+  fontFamily: "'Poppins', sans-serif",
+  fontSize: "15px", // 14px – 16px
   fontWeight: 500,
+  color: "#FFFFFF",
+  textDecoration: "none",
 };
 
 export default Header;

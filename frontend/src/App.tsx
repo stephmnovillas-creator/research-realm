@@ -33,3 +33,16 @@ function App() {
 }
 
 export default App
+
+import Header from "./features/header/Header";
+
+function App() {
+  return (
+    <>
+      <Header />
+      {/* other components here */}
+    </>
+  );
+}
+
+export default App;
