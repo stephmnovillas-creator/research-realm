@@ -1,48 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg';
+import { useState } from "react";
 
-function App() {
-   ();
-  const [count, setCount] = useState(0)
+import Header from "./component/header/header"; 
+import NavBar from "./component/header/navigation menu/NavBar"; 
+import SearchBar from "./component/header/SearchBar/SearchBar"; 
+import CategoryFilter from "./component/header/CategoryFilter/CategoryFilter"; 
+import ArchiveList from "./component/header/ArchiveList/ArchiveList"; 
+import AddArchive from "./component/header/AddArchive/AddArchive"; 
+import UserRoles from "./component/header/UserRoles/UserRoles";
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+const App = () => {
+  const [count, setCount] = useState(0);
 
-export default App
-
-import Header from "./component/header/header.tsx";
-
-function App() {
   return (
     <>
       <Header />
-      {/* other components here */}
+      <NavBar />
+      <UserRoles role="admin" />
+      <SearchBar />
+      <CategoryFilter />
+      <ArchiveList />
+      <AddArchive />
+
+      {/* Example state usage */}
+      <button onClick={() => setCount(count + 1)}>
+        count is {count}
+      </button>
     </>
   );
-}
+};
 
 export default App;
