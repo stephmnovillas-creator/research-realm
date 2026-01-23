@@ -14,10 +14,10 @@ datasource db {
 }
 model Research {
   id          Int      @id @default(autoincrement())
-  title       String
-  abstract String
-  author      String
-  publishedAt Int @db.Year
+  title       String  @db.Text
+  abstract String @db.Text
+  author      String @db.Text
+  publishedAt Int @db.Year 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt @default(now())
 }
