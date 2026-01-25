@@ -32,7 +32,7 @@ const ArchiveListIndexRoute = ArchiveListIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/archive-list': typeof ArchiveListIndexRoute
+  '/archive-list/': typeof ArchiveListIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -47,7 +47,7 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/archive-list'
+  fullPaths: '/' | '/about' | '/archive-list/'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/about' | '/archive-list'
   id: '__root__' | '/' | '/about' | '/archive-list/'
@@ -78,7 +78,7 @@ declare module '@tanstack/react-router' {
     '/archive-list/': {
       id: '/archive-list/'
       path: '/archive-list'
-      fullPath: '/archive-list'
+      fullPath: '/archive-list/'
       preLoaderRoute: typeof ArchiveListIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
