@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import { prisma } from "./lib/prisma";
+
 const app = express();
 
 app.use(express.json());
@@ -8,11 +9,11 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Research Realm Backend is running");
 });
-app.get("/archives",async (req, res) => {
-  const archives= await prisma.research.findMany();
+app.get("/archives", async (req, res) => {
+  const archives = await prisma.research.findMany();
   res.json(archives);
 });
-app.get("/archives/:id",async (req, res) => {
+app.get("/archives/:id", async (req, res) => {
   const { id } = req.params;
   const research = await prisma.research.findUnique({
     where: { id: Number(id) },
@@ -23,14 +24,14 @@ app.get("/archives/:id",async (req, res) => {
     res.status(404).json({ error: "Research not found" });
   }
 });
-app.post("/archives",async (req, res) => {
+app.post("/archives", async (req, res) => {
   const { title, author, abstract, publishedAt } = req.body;
   const newResearch = await prisma.research.create({
     data: {
       title,
       author,
       abstract,
-      publishedAt
+      publishedAt,
     },
   });
   res.status(201).json(newResearch);
