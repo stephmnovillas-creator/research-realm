@@ -13,6 +13,7 @@
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
+    "preserveSymlinks": true,
 
     /* Linting */
     "strict": true,
@@ -23,8 +24,9 @@
     "noUncheckedSideEffectImports": true,
     
     "paths": {
-      "@frontend": ["../frontend/src/*"]
+      "@backend/*": ["../backend/src/*"],
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "../backend/src"]
 }
