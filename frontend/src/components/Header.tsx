@@ -1,25 +1,22 @@
+import { UserCircle } from "lucide-react";
 
-// Optional: define props if you want a dynamic title
-interface HeaderProps {
-  title?: string;
+export default function Header() {
+	return (
+		<header className="bg-[#7a9b76] text-white px-8 py-4 shadow-md z-10">
+			<div className="flex items-center justify-end gap-4">
+				{/* User Account */}
+				<div className="relative">
+					<button
+						onClick={() => {
+							console.log("Login clicked");
+						}}
+						className="flex items-center gap-2 px-4 py-2 bg-[#6a8b66] hover:bg-[#5a7b56] rounded-full transition-colors"
+					>
+						<UserCircle className="w-6 h-6" />
+						<span className="font-medium">Login</span>
+					</button>
+				</div>
+			</div>
+		</header>
+	);
 }
-
-const Header: React.FC<HeaderProps> = ({ title = "Research Realm" }) => {
-  return (
-    <header className="flex ">
-      <div>
-        <h1>{title}</h1>
-        <p>Research Realm</p>
-      </div>
-
-      <nav>
-        <a href="/">Home</a>
-        <a href="/archive">Archive</a>
-        <a href="/about">About</a>
-      </nav>
-    </header>
-  );
-};
-
-
-export default Header;
