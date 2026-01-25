@@ -1,12 +1,11 @@
 import { useState } from "react";
-
-import Header from "./component/header/header"; 
-import NavBar from "./component/header/navigation menu/NavBar"; 
-import SearchBar from "./component/header/SearchBar/SearchBar"; 
-import CategoryFilter from "./component/header/CategoryFilter/CategoryFilter"; 
-import ArchiveList from "./component/header/ArchiveList/ArchiveList"; 
-import AddArchive from "./component/header/AddArchive/AddArchive"; 
-import UserRoles from "./component/header/UserRoles/UserRoles";
+import AddArchive from "./components/AddArchive";
+import ArchiveList from "./components/ArchiveList";
+import CategoryFilter from "./components/CategoryFilter";
+import Header from "./components/Header";
+import NavBar from "./components/NavBar";
+import SearchBar from "./components/SearchBar";
+import UserRoles from "./components/UserRoles";
 
 const App = () => {
   const [count, setCount] = useState(0);
@@ -22,9 +21,7 @@ const App = () => {
       <AddArchive />
 
       {/* Example state usage */}
-      <button onClick={() => setCount(count + 1)}>
-        count is {count}
-      </button>
+      <button onClick={() => setCount(count + 1)}>count is {count}</button>
     </>
   );
 };
