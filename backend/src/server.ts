@@ -27,9 +27,9 @@ app.get("/archives", async (req, res) => {
 				search
 					? {
 							OR: [
-								{ title: { contains: String(search) } },
-								{ author: { contains: String(search) } },
-								{ abstract: { contains: String(search) } },
+								{ title: { contains: String(search),  } },
+								{ author: { contains: String(search),  } },
+								{ abstract: { contains: String(search), } },
 							],
 					  }
 					: {},

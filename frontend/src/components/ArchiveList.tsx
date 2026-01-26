@@ -1,5 +1,6 @@
 import { FileText } from "lucide-react";
 import type { ArchivePaper } from "../types/Archive";
+import ArchiveListItem from "./ArchiveListItem";
 
 interface ArchiveListProps {
 	papers: ArchivePaper[];
@@ -39,26 +40,7 @@ export default function ArchiveList({ papers }: ArchiveListProps) {
 				</thead>
 				<tbody>
 					{papers.map((paper, index) => (
-						<tr
-							key={paper.id}
-							className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${
-								index % 2 === 0 ? "bg-white" : "bg-gray-50"
-							}`}
-						>
-							<td className="px-6 py-4 text-gray-700">{paper.title}</td>
-							<td className="px-6 py-4 text-gray-700">{paper.publishedAt}</td>
-							<td className="px-6 py-4 text-gray-700">{paper.author}</td>
-							<td className="px-6 py-4 text-center">
-								<button
-									onClick={() => {
-										console.log(`View abstract for paper ID: ${paper.id}`);
-									}}
-									className="px-5 py-2 bg-[#7a9b76] text-white rounded-md hover:bg-[#6a8b66] transition-colors text-sm font-medium"
-								>
-									VIEW ABSTRACT
-								</button>
-							</td>
-						</tr>
+						<ArchiveListItem key={paper.id} paper={paper} index={index} />
 					))}
 				</tbody>
 			</table>

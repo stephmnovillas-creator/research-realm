@@ -17,7 +17,7 @@ export function SearchAndFilters() {
 	) => {
 		const params = new URLSearchParams();
 
-		if (searchQuery) params.append("search", searchQuery);
+		if (search) params.append("search", search);
 		if (year !== "all") {
 			params.append("year", String(year));
 		}
