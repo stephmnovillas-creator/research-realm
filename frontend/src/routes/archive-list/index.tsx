@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { PlusCircle } from "lucide-react";
 import React from "react";
 import ArchiveList from "../../components/ArchiveList";
@@ -69,13 +69,13 @@ function RouteComponent() {
 			<div className="flex justify-between items-center">
 				<h1 className="text-3xl font-bold text-gray-900">Research Archives</h1>
 				{userRole === "ADMIN" && (
-					<button
-						onClick={() => router.navigate({ to: "/create-research" })}
+					<Link
+						to={"/create-research"}
 						className="flex items-center gap-2 px-4 py-2 bg-[#7a9b76] text-white rounded-lg hover:bg-[#6a8b66] transition-colors font-medium"
 					>
 						<PlusCircle className="w-5 h-5" />
 						Add Research
-					</button>
+					</Link>
 				)}
 			</div>
 			<SearchAndFilters />
