@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CreateResearchRouteImport } from './routes/create-research'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArchiveListIndexRouteImport } from './routes/archive-list/index'
 import { Route as ArchiveListIdRouteImport } from './routes/archive-list/$id'
 
+const CreateResearchRoute = CreateResearchRouteImport.update({
+  id: '/create-research',
+  path: '/create-research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -38,12 +44,14 @@ const ArchiveListIdRoute = ArchiveListIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/create-research': typeof CreateResearchRoute
   '/archive-list/$id': typeof ArchiveListIdRoute
   '/archive-list/': typeof ArchiveListIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/create-research': typeof CreateResearchRoute
   '/archive-list/$id': typeof ArchiveListIdRoute
   '/archive-list': typeof ArchiveListIndexRoute
 }
@@ -51,26 +59,51 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/create-research': typeof CreateResearchRoute
   '/archive-list/$id': typeof ArchiveListIdRoute
   '/archive-list/': typeof ArchiveListIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/archive-list/$id' | '/archive-list/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/create-research'
+    | '/archive-list/$id'
+    | '/archive-list/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/archive-list/$id' | '/archive-list'
-  id: '__root__' | '/' | '/about' | '/archive-list/$id' | '/archive-list/'
+  to:
+    | '/'
+    | '/about'
+    | '/create-research'
+    | '/archive-list/$id'
+    | '/archive-list'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/create-research'
+    | '/archive-list/$id'
+    | '/archive-list/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CreateResearchRoute: typeof CreateResearchRoute
   ArchiveListIdRoute: typeof ArchiveListIdRoute
   ArchiveListIndexRoute: typeof ArchiveListIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/create-research': {
+      id: '/create-research'
+      path: '/create-research'
+      fullPath: '/create-research'
+      preLoaderRoute: typeof CreateResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -105,6 +138,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CreateResearchRoute: CreateResearchRoute,
   ArchiveListIdRoute: ArchiveListIdRoute,
   ArchiveListIndexRoute: ArchiveListIndexRoute,
 }
