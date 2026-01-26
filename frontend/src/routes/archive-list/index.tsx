@@ -8,78 +8,78 @@ import type { YEARS } from "../../lib/constants";
 import { archivesQueryOptions } from "../../lib/queryOptions";
 
 export const Route = createFileRoute("/archive-list/")({
-  component: RouteComponent,
-  validateSearch: (search) => {
-    if (!search.search && !search.year) {
-      return {
-        search: undefined,
-        year: undefined,
-      };
-    }
+	component: RouteComponent,
+	validateSearch: (search) => {
+		if (!search.search && !search.year) {
+			return {
+				search: undefined,
+				year: undefined,
+			};
+		}
 
-    return {
-      search: search.search ? String(search.search) : undefined,
-      year: (search.year && search.year !== "all"
-        ? String(search.year)
-        : undefined) as (typeof YEARS)[keyof typeof YEARS] | "all" | undefined,
-    };
-  },
+		return {
+			search: search.search ? String(search.search) : undefined,
+			year: (search.year && search.year !== "all"
+				? String(search.year)
+				: undefined) as (typeof YEARS)[keyof typeof YEARS] | "all" | undefined,
+		};
+	},
 
-  loaderDeps: ({ search }) => ({
-    search,
-  }),
-  loader: ({ context, deps: { search } }) => {
-    console.log("Loader search param:", search);
-    context.queryClient.ensureQueryData(
-      archivesQueryOptions(search.search, search.year),
-    );
-  },
-  errorComponent: () => <div>Failed to load archives.</div>,
+	loaderDeps: ({ search }) => ({
+		search,
+	}),
+	loader: ({ context, deps: { search } }) => {
+		console.log("Loader search param:", search);
+		context.queryClient.ensureQueryData(
+			archivesQueryOptions(search.search, search.year),
+		);
+	},
+	errorComponent: () => <div>Failed to load archives.</div>,
 });
 
 function RouteComponent() {
-  const router = useRouter();
-  const { search, year } = Route.useSearch();
-  const { data, isLoading } = useQuery(archivesQueryOptions(search, year));
+	const router = useRouter();
+	const { search, year } = Route.useSearch();
+	const { data, isLoading } = useQuery(archivesQueryOptions(search, year));
 
-  // Get user from localStorage to check role
-  const [userRole, setUserRole] = React.useState<string | null>(null);
+	// Get user from localStorage to check role
+	const [userRole, setUserRole] = React.useState<string | null>(null);
 
-  React.useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      try {
-        const user = JSON.parse(storedUser);
-        setUserRole(user.role);
-      } catch (e) {
-        console.error("Failed to parse user from localStorage", e);
-      }
-    }
-  }, []);
+	React.useEffect(() => {
+		const storedUser = localStorage.getItem("user");
+		if (storedUser) {
+			try {
+				const user = JSON.parse(storedUser);
+				setUserRole(user.role);
+			} catch (e) {
+				console.error("Failed to parse user from localStorage", e);
+			}
+		}
+	}, []);
 
-  if (isLoading) {
-    return <div>Loading archives...</div>;
-  }
-  if (data === undefined) {
-    return <div>No archives available.</div>;
-  }
+	if (isLoading) {
+		return <div>Loading archives...</div>;
+	}
+	if (data === undefined) {
+		return <div>No archives available.</div>;
+	}
 
-  return (
-    <div className="space-y-6 w-full">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-gray-900">Research Archives</h1>
-        {userRole === "ADMIN" && (
-          <button
-            onClick={() => router.navigate({ to: "/create-research" })}
-            className="flex items-center gap-2 px-4 py-2 bg-[#7a9b76] text-white rounded-lg hover:bg-[#6a8b66] transition-colors font-medium"
-          >
-            <PlusCircle className="w-5 h-5" />
-            Add Research
-          </button>
-        )}
-      </div>
-      <SearchAndFilters />
-      <ArchiveList papers={data} />
-    </div>
-  );
+	return (
+		<div className="space-y-6 w-full p-10">
+			<div className="flex justify-between items-center">
+				<h1 className="text-3xl font-bold text-gray-900">Research Archives</h1>
+				{userRole === "ADMIN" && (
+					<button
+						onClick={() => router.navigate({ to: "/create-research" })}
+						className="flex items-center gap-2 px-4 py-2 bg-[#7a9b76] text-white rounded-lg hover:bg-[#6a8b66] transition-colors font-medium"
+					>
+						<PlusCircle className="w-5 h-5" />
+						Add Research
+					</button>
+				)}
+			</div>
+			<SearchAndFilters />
+			<ArchiveList papers={data} />
+		</div>
+	);
 }

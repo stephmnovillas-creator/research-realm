@@ -10,7 +10,7 @@ const RootLayout = () => (
     <div className="flex flex-col h-screen">
       <Header />
       <div className="flex-1 overflow-auto">
-        <div className="w-full">
+        <div className="w-full h-full">
           <Outlet />
         </div>
       </div>
