@@ -14,6 +14,8 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArchiveListIndexRouteImport } from './routes/archive-list/index'
 import { Route as ArchiveListIdRouteImport } from './routes/archive-list/$id'
+import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
+import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 
 const CreateResearchRoute = CreateResearchRouteImport.update({
   id: '/create-research',
@@ -40,11 +42,23 @@ const ArchiveListIdRoute = ArchiveListIdRouteImport.update({
   path: '/archive-list/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const authSignUpRoute = authSignUpRouteImport.update({
+  id: '/(auth)/sign-up',
+  path: '/sign-up',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authSignInRoute = authSignInRouteImport.update({
+  id: '/(auth)/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/create-research': typeof CreateResearchRoute
+  '/sign-in': typeof authSignInRoute
+  '/sign-up': typeof authSignUpRoute
   '/archive-list/$id': typeof ArchiveListIdRoute
   '/archive-list/': typeof ArchiveListIndexRoute
 }
@@ -52,6 +66,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/create-research': typeof CreateResearchRoute
+  '/sign-in': typeof authSignInRoute
+  '/sign-up': typeof authSignUpRoute
   '/archive-list/$id': typeof ArchiveListIdRoute
   '/archive-list': typeof ArchiveListIndexRoute
 }
@@ -60,6 +76,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/create-research': typeof CreateResearchRoute
+  '/(auth)/sign-in': typeof authSignInRoute
+  '/(auth)/sign-up': typeof authSignUpRoute
   '/archive-list/$id': typeof ArchiveListIdRoute
   '/archive-list/': typeof ArchiveListIndexRoute
 }
@@ -69,6 +87,8 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/create-research'
+    | '/sign-in'
+    | '/sign-up'
     | '/archive-list/$id'
     | '/archive-list/'
   fileRoutesByTo: FileRoutesByTo
@@ -76,6 +96,8 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/create-research'
+    | '/sign-in'
+    | '/sign-up'
     | '/archive-list/$id'
     | '/archive-list'
   id:
@@ -83,6 +105,8 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/create-research'
+    | '/(auth)/sign-in'
+    | '/(auth)/sign-up'
     | '/archive-list/$id'
     | '/archive-list/'
   fileRoutesById: FileRoutesById
@@ -91,6 +115,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CreateResearchRoute: typeof CreateResearchRoute
+  authSignInRoute: typeof authSignInRoute
+  authSignUpRoute: typeof authSignUpRoute
   ArchiveListIdRoute: typeof ArchiveListIdRoute
   ArchiveListIndexRoute: typeof ArchiveListIndexRoute
 }
@@ -132,6 +158,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArchiveListIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(auth)/sign-up': {
+      id: '/(auth)/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof authSignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)/sign-in': {
+      id: '/(auth)/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof authSignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -139,6 +179,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CreateResearchRoute: CreateResearchRoute,
+  authSignInRoute: authSignInRoute,
+  authSignUpRoute: authSignUpRoute,
   ArchiveListIdRoute: ArchiveListIdRoute,
   ArchiveListIndexRoute: ArchiveListIndexRoute,
 }

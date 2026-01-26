@@ -13,12 +13,26 @@ generator client {
 datasource db {
   provider = "mysql"
 }
+model User {
+  id        Int      @id @default(autoincrement())
+  lrn       String   @unique @db.VarChar(12)
+  firstName String   @db.VarChar(100)
+  lastName  String   @db.VarChar(100)
+  email     String   @unique @db.VarChar(255)
+  password  String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([lrn])
+  @@index([email])
+}
+
 model Research {
   id          Int      @id @default(autoincrement())
-  title       String  @db.Text
-  abstract String @db.Text
-  author      String @db.Text
-  publishedAt Int @db.Year 
+  title       String   @db.Text
+  abstract    String   @db.Text
+  author      String   @db.Text
+  publishedAt Int      @db.Year 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt @default(now())
 }
