@@ -3,7 +3,7 @@ import { Check, CreditCard, Lock, Mail, User, UserPlus } from "lucide-react";
 import React from "react";
 import { useAuth } from "../../lib/auth";
 
-export const Route = createFileRoute("/(auth)/sign-up")({
+export const Route = createFileRoute("/_auth/sign-up")({
 	component: RouteComponent,
 });
 
@@ -23,18 +23,18 @@ function RouteComponent() {
 	const handlePasswordChange = (value: string) => {
 		setPassword(value);
 		setPasswordsMatch(value === confirmPassword);
-	};
+	}
 
 	const handleConfirmPasswordChange = (value: string) => {
 		setConfirmPassword(value);
 		setPasswordsMatch(password === value);
-	};
+	}
 
 	const handleLrnChange = (value: string) => {
 		// Only allow digits and limit to 12 characters
 		const numericValue = value.replace(/\D/g, "").slice(0, 12);
 		setLrn(numericValue);
-	};
+	}
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -42,17 +42,17 @@ function RouteComponent() {
 
 		if (lrn.length !== 12) {
 			setError("LRN must be exactly 12 digits.");
-			return;
+			return
 		}
 
 		if (!passwordsMatch) {
 			setError("Passwords do not match.");
-			return;
+			return
 		}
 
 		if (password.length < 8) {
 			setError("Password must be at least 8 characters long.");
-			return;
+			return
 		}
 
 		setIsLoading(true);
@@ -64,13 +64,13 @@ function RouteComponent() {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({ firstName, lastName, lrn, email, password }),
-			});
+			})
 
 			const data = await response.json();
 
 			if (!response.ok) {
 				setError(data.error || "Failed to create account");
-				return;
+				return
 			}
 
       // Use auth context to login
@@ -80,14 +80,14 @@ function RouteComponent() {
 			router.navigate({
 				to: "/archive-list",
 				search: { search: undefined, year: undefined },
-			});
+			})
 		} catch (err) {
 			setError("Failed to create account. Please try again.");
 			console.error(err);
 		} finally {
 			setIsLoading(false);
 		}
-	};
+	}
 
 	return (
 		<div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4 py-12">
@@ -312,5 +312,5 @@ function RouteComponent() {
 				</p>
 			</div>
 		</div>
-	);
+	)
 }

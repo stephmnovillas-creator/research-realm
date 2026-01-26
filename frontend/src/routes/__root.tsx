@@ -3,7 +3,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import Header from "../components/Header";
-import { AuthProvider, type AuthContext } from "../lib/auth";
+import { AuthProvider } from "../lib/auth";
+import type { AuthContext } from "../lib/auth.context";
 import { queryClient } from "../router";
 
 const RootLayout = () => (

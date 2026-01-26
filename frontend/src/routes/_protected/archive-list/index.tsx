@@ -3,11 +3,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PlusCircle } from "lucide-react";
 import ArchiveList from "../../../components/ArchiveList";
 import { SearchAndFilters } from "../../../components/ArchiveSearchAndFilter";
-import { useAuth } from "../../../lib/auth";
 import type { YEARS } from "../../../lib/constants";
 import { archivesQueryOptions } from "../../../lib/queryOptions";
+import { useAuth } from "../../../lib/useAuth";
 
-export const Route = createFileRoute("/_authed/archive-list/")({
+export const Route = createFileRoute("/_protected/archive-list/")({
 	component: RouteComponent,
 	validateSearch: (search) => {
 		if (!search.search && !search.year) {

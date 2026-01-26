@@ -9,7 +9,7 @@ interface ArchiveDetailsProps {
 export default function ArchiveDetailsComponent({
 	research,
 }: ArchiveDetailsProps) {
-	return <div className="max-w-5xl mx-auto">
+	return <div className="max-w-5xl mx-auto pt-10">
 		{/* Back Button */}
 		<Link
 			to=".."

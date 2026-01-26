@@ -3,7 +3,7 @@ import { Search } from "lucide-react";
 import React from "react";
 import { YEARS } from "../lib/constants";
 
-const archiveListRouteApi = getRouteApi("/archive-list/");
+const archiveListRouteApi = getRouteApi("/_protected/archive-list/");
 
 export function SearchAndFilters() {
 	const params = archiveListRouteApi.useSearch();

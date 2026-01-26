@@ -10,21 +10,26 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as AuthedRouteImport } from './routes/_authed'
+import { Route as ProtectedRouteImport } from './routes/_protected'
+import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthedCreateResearchRouteImport } from './routes/_authed/create-research'
-import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
-import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
-import { Route as AuthedArchiveListIndexRouteImport } from './routes/_authed/archive-list/index'
-import { Route as AuthedArchiveListIdRouteImport } from './routes/_authed/archive-list/$id'
+import { Route as ProtectedCreateResearchRouteImport } from './routes/_protected/create-research'
+import { Route as AuthSignUpRouteImport } from './routes/_auth/sign-up'
+import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
+import { Route as ProtectedArchiveListIndexRouteImport } from './routes/_protected/archive-list/index'
+import { Route as ProtectedArchiveListIdRouteImport } from './routes/_protected/archive-list/$id'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthedRoute = AuthedRouteImport.update({
-  id: '/_authed',
+const ProtectedRoute = ProtectedRouteImport.update({
+  id: '/_protected',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/_auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -32,60 +37,62 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthedCreateResearchRoute = AuthedCreateResearchRouteImport.update({
+const ProtectedCreateResearchRoute = ProtectedCreateResearchRouteImport.update({
   id: '/create-research',
   path: '/create-research',
-  getParentRoute: () => AuthedRoute,
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const authSignUpRoute = authSignUpRouteImport.update({
-  id: '/(auth)/sign-up',
+const AuthSignUpRoute = AuthSignUpRouteImport.update({
+  id: '/sign-up',
   path: '/sign-up',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthRoute,
 } as any)
-const authSignInRoute = authSignInRouteImport.update({
-  id: '/(auth)/sign-in',
+const AuthSignInRoute = AuthSignInRouteImport.update({
+  id: '/sign-in',
   path: '/sign-in',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthRoute,
 } as any)
-const AuthedArchiveListIndexRoute = AuthedArchiveListIndexRouteImport.update({
-  id: '/archive-list/',
-  path: '/archive-list/',
-  getParentRoute: () => AuthedRoute,
-} as any)
-const AuthedArchiveListIdRoute = AuthedArchiveListIdRouteImport.update({
+const ProtectedArchiveListIndexRoute =
+  ProtectedArchiveListIndexRouteImport.update({
+    id: '/archive-list/',
+    path: '/archive-list/',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
+const ProtectedArchiveListIdRoute = ProtectedArchiveListIdRouteImport.update({
   id: '/archive-list/$id',
   path: '/archive-list/$id',
-  getParentRoute: () => AuthedRoute,
+  getParentRoute: () => ProtectedRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/sign-in': typeof authSignInRoute
-  '/sign-up': typeof authSignUpRoute
-  '/create-research': typeof AuthedCreateResearchRoute
-  '/archive-list/$id': typeof AuthedArchiveListIdRoute
-  '/archive-list/': typeof AuthedArchiveListIndexRoute
+  '/sign-in': typeof AuthSignInRoute
+  '/sign-up': typeof AuthSignUpRoute
+  '/create-research': typeof ProtectedCreateResearchRoute
+  '/archive-list/$id': typeof ProtectedArchiveListIdRoute
+  '/archive-list/': typeof ProtectedArchiveListIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/sign-in': typeof authSignInRoute
-  '/sign-up': typeof authSignUpRoute
-  '/create-research': typeof AuthedCreateResearchRoute
-  '/archive-list/$id': typeof AuthedArchiveListIdRoute
-  '/archive-list': typeof AuthedArchiveListIndexRoute
+  '/sign-in': typeof AuthSignInRoute
+  '/sign-up': typeof AuthSignUpRoute
+  '/create-research': typeof ProtectedCreateResearchRoute
+  '/archive-list/$id': typeof ProtectedArchiveListIdRoute
+  '/archive-list': typeof ProtectedArchiveListIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_authed': typeof AuthedRouteWithChildren
+  '/_auth': typeof AuthRouteWithChildren
+  '/_protected': typeof ProtectedRouteWithChildren
   '/about': typeof AboutRoute
-  '/(auth)/sign-in': typeof authSignInRoute
-  '/(auth)/sign-up': typeof authSignUpRoute
-  '/_authed/create-research': typeof AuthedCreateResearchRoute
-  '/_authed/archive-list/$id': typeof AuthedArchiveListIdRoute
-  '/_authed/archive-list/': typeof AuthedArchiveListIndexRoute
+  '/_auth/sign-in': typeof AuthSignInRoute
+  '/_auth/sign-up': typeof AuthSignUpRoute
+  '/_protected/create-research': typeof ProtectedCreateResearchRoute
+  '/_protected/archive-list/$id': typeof ProtectedArchiveListIdRoute
+  '/_protected/archive-list/': typeof ProtectedArchiveListIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -109,21 +116,21 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/_authed'
+    | '/_auth'
+    | '/_protected'
     | '/about'
-    | '/(auth)/sign-in'
-    | '/(auth)/sign-up'
-    | '/_authed/create-research'
-    | '/_authed/archive-list/$id'
-    | '/_authed/archive-list/'
+    | '/_auth/sign-in'
+    | '/_auth/sign-up'
+    | '/_protected/create-research'
+    | '/_protected/archive-list/$id'
+    | '/_protected/archive-list/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthedRoute: typeof AuthedRouteWithChildren
+  AuthRoute: typeof AuthRouteWithChildren
+  ProtectedRoute: typeof ProtectedRouteWithChildren
   AboutRoute: typeof AboutRoute
-  authSignInRoute: typeof authSignInRoute
-  authSignUpRoute: typeof authSignUpRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -135,11 +142,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authed': {
-      id: '/_authed'
+    '/_protected': {
+      id: '/_protected'
       path: ''
       fullPath: '/'
-      preLoaderRoute: typeof AuthedRouteImport
+      preLoaderRoute: typeof ProtectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -149,65 +163,77 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authed/create-research': {
-      id: '/_authed/create-research'
+    '/_protected/create-research': {
+      id: '/_protected/create-research'
       path: '/create-research'
       fullPath: '/create-research'
-      preLoaderRoute: typeof AuthedCreateResearchRouteImport
-      parentRoute: typeof AuthedRoute
+      preLoaderRoute: typeof ProtectedCreateResearchRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/(auth)/sign-up': {
-      id: '/(auth)/sign-up'
+    '/_auth/sign-up': {
+      id: '/_auth/sign-up'
       path: '/sign-up'
       fullPath: '/sign-up'
-      preLoaderRoute: typeof authSignUpRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthSignUpRouteImport
+      parentRoute: typeof AuthRoute
     }
-    '/(auth)/sign-in': {
-      id: '/(auth)/sign-in'
+    '/_auth/sign-in': {
+      id: '/_auth/sign-in'
       path: '/sign-in'
       fullPath: '/sign-in'
-      preLoaderRoute: typeof authSignInRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthSignInRouteImport
+      parentRoute: typeof AuthRoute
     }
-    '/_authed/archive-list/': {
-      id: '/_authed/archive-list/'
+    '/_protected/archive-list/': {
+      id: '/_protected/archive-list/'
       path: '/archive-list'
       fullPath: '/archive-list/'
-      preLoaderRoute: typeof AuthedArchiveListIndexRouteImport
-      parentRoute: typeof AuthedRoute
+      preLoaderRoute: typeof ProtectedArchiveListIndexRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/_authed/archive-list/$id': {
-      id: '/_authed/archive-list/$id'
+    '/_protected/archive-list/$id': {
+      id: '/_protected/archive-list/$id'
       path: '/archive-list/$id'
       fullPath: '/archive-list/$id'
-      preLoaderRoute: typeof AuthedArchiveListIdRouteImport
-      parentRoute: typeof AuthedRoute
+      preLoaderRoute: typeof ProtectedArchiveListIdRouteImport
+      parentRoute: typeof ProtectedRoute
     }
   }
 }
 
-interface AuthedRouteChildren {
-  AuthedCreateResearchRoute: typeof AuthedCreateResearchRoute
-  AuthedArchiveListIdRoute: typeof AuthedArchiveListIdRoute
-  AuthedArchiveListIndexRoute: typeof AuthedArchiveListIndexRoute
+interface AuthRouteChildren {
+  AuthSignInRoute: typeof AuthSignInRoute
+  AuthSignUpRoute: typeof AuthSignUpRoute
 }
 
-const AuthedRouteChildren: AuthedRouteChildren = {
-  AuthedCreateResearchRoute: AuthedCreateResearchRoute,
-  AuthedArchiveListIdRoute: AuthedArchiveListIdRoute,
-  AuthedArchiveListIndexRoute: AuthedArchiveListIndexRoute,
+const AuthRouteChildren: AuthRouteChildren = {
+  AuthSignInRoute: AuthSignInRoute,
+  AuthSignUpRoute: AuthSignUpRoute,
 }
 
-const AuthedRouteWithChildren =
-  AuthedRoute._addFileChildren(AuthedRouteChildren)
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+
+interface ProtectedRouteChildren {
+  ProtectedCreateResearchRoute: typeof ProtectedCreateResearchRoute
+  ProtectedArchiveListIdRoute: typeof ProtectedArchiveListIdRoute
+  ProtectedArchiveListIndexRoute: typeof ProtectedArchiveListIndexRoute
+}
+
+const ProtectedRouteChildren: ProtectedRouteChildren = {
+  ProtectedCreateResearchRoute: ProtectedCreateResearchRoute,
+  ProtectedArchiveListIdRoute: ProtectedArchiveListIdRoute,
+  ProtectedArchiveListIndexRoute: ProtectedArchiveListIndexRoute,
+}
+
+const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
+  ProtectedRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthedRoute: AuthedRouteWithChildren,
+  AuthRoute: AuthRouteWithChildren,
+  ProtectedRoute: ProtectedRouteWithChildren,
   AboutRoute: AboutRoute,
-  authSignInRoute: authSignInRoute,
-  authSignUpRoute: authSignUpRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

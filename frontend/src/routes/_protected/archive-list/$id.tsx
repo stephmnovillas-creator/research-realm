@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import ArchiveDetailsComponent from "../../../components/ArchiveDetailsComponent";
 import { archiveDetailsQueryOptions } from "../../../lib/queryOptions";
 
-export const Route = createFileRoute("/_authed/archive-list/$id")({
+export const Route = createFileRoute("/_protected/archive-list/$id")({
 	component: RouteComponent,
 
 	loader: ({ context, params }) => {
