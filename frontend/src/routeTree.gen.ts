@@ -9,12 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CreateResearchRouteImport } from './routes/create-research'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArchiveListIndexRouteImport } from './routes/archive-list/index'
+import { Route as ArchiveListIdRouteImport } from './routes/archive-list/$id'
 import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 
+const CreateResearchRoute = CreateResearchRouteImport.update({
+  id: '/create-research',
+  path: '/create-research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -28,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
 const ArchiveListIndexRoute = ArchiveListIndexRouteImport.update({
   id: '/archive-list/',
   path: '/archive-list/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArchiveListIdRoute = ArchiveListIdRouteImport.update({
+  id: '/archive-list/$id',
+  path: '/archive-list/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const authSignUpRoute = authSignUpRouteImport.update({
@@ -44,49 +56,80 @@ const authSignInRoute = authSignInRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/create-research': typeof CreateResearchRoute
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
+  '/archive-list/$id': typeof ArchiveListIdRoute
   '/archive-list/': typeof ArchiveListIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/create-research': typeof CreateResearchRoute
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
+  '/archive-list/$id': typeof ArchiveListIdRoute
   '/archive-list': typeof ArchiveListIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/create-research': typeof CreateResearchRoute
   '/(auth)/sign-in': typeof authSignInRoute
   '/(auth)/sign-up': typeof authSignUpRoute
+  '/archive-list/$id': typeof ArchiveListIdRoute
   '/archive-list/': typeof ArchiveListIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/sign-in' | '/sign-up' | '/archive-list/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/create-research'
+    | '/sign-in'
+    | '/sign-up'
+    | '/archive-list/$id'
+    | '/archive-list/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/sign-in' | '/sign-up' | '/archive-list'
+  to:
+    | '/'
+    | '/about'
+    | '/create-research'
+    | '/sign-in'
+    | '/sign-up'
+    | '/archive-list/$id'
+    | '/archive-list'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/create-research'
     | '/(auth)/sign-in'
     | '/(auth)/sign-up'
+    | '/archive-list/$id'
     | '/archive-list/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CreateResearchRoute: typeof CreateResearchRoute
   authSignInRoute: typeof authSignInRoute
   authSignUpRoute: typeof authSignUpRoute
+  ArchiveListIdRoute: typeof ArchiveListIdRoute
   ArchiveListIndexRoute: typeof ArchiveListIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/create-research': {
+      id: '/create-research'
+      path: '/create-research'
+      fullPath: '/create-research'
+      preLoaderRoute: typeof CreateResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -106,6 +149,13 @@ declare module '@tanstack/react-router' {
       path: '/archive-list'
       fullPath: '/archive-list/'
       preLoaderRoute: typeof ArchiveListIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/archive-list/$id': {
+      id: '/archive-list/$id'
+      path: '/archive-list/$id'
+      fullPath: '/archive-list/$id'
+      preLoaderRoute: typeof ArchiveListIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(auth)/sign-up': {
@@ -128,8 +178,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CreateResearchRoute: CreateResearchRoute,
   authSignInRoute: authSignInRoute,
   authSignUpRoute: authSignUpRoute,
+  ArchiveListIdRoute: ArchiveListIdRoute,
   ArchiveListIndexRoute: ArchiveListIndexRoute,
 }
 export const routeTree = rootRouteImport
