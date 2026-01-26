@@ -1,61 +1,18 @@
 import { GraduationCap, UserCircle, LogOut, ChevronDown } from "lucide-react";
 import { useRouter, useLocation } from "@tanstack/react-router";
 import React from "react";
+import { useAuth } from "../lib/auth";
 
 export default function Header() {
   const router = useRouter();
   const location = useLocation();
-  const [user, setUser] = React.useState<{
-    firstName: string;
-    lastName: string;
-    role: string;
-  } | null>(null);
+  const { user, logout: authLogout } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   // Check if we're on auth pages
   const isAuthPage =
     location.pathname === "/sign-in" || location.pathname === "/sign-up";
-
-  // Load user from localStorage
-  React.useEffect(() => {
-    const loadUser = () => {
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        try {
-          setUser(JSON.parse(storedUser));
-        } catch (e) {
-          console.error("Failed to parse user from localStorage", e);
-          setUser(null);
-        }
-      } else {
-        setUser(null);
-      }
-    };
-
-    // Load user on mount
-    loadUser();
-
-    // Listen for storage changes (when localStorage is updated)
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === "user") {
-        loadUser();
-      }
-    };
-
-    // Listen for custom events (for same-tab updates)
-    const handleUserUpdate = () => {
-      loadUser();
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    window.addEventListener("userUpdated", handleUserUpdate);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-      window.removeEventListener("userUpdated", handleUserUpdate);
-    };
-  }, []);
 
   // Close dropdown when clicking outside
   React.useEffect(() => {
@@ -75,11 +32,8 @@ export default function Header() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    authLogout();
     setIsDropdownOpen(false);
-    // Dispatch custom event to update all components
-    window.dispatchEvent(new Event("userUpdated"));
     router.navigate({ to: "/sign-in" });
   };
 

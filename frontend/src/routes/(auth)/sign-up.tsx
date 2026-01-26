@@ -1,6 +1,7 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { Mail, Lock, User, UserPlus, Check, CreditCard } from "lucide-react";
 import React from "react";
+import { useAuth } from "../../lib/auth";
 
 export const Route = createFileRoute("/(auth)/sign-up")({
   component: RouteComponent,
@@ -8,6 +9,7 @@ export const Route = createFileRoute("/(auth)/sign-up")({
 
 function RouteComponent() {
   const router = useRouter();
+  const { login } = useAuth();
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [lrn, setLrn] = React.useState("");
@@ -71,12 +73,8 @@ function RouteComponent() {
         return;
       }
 
-      // Store token in localStorage
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
-
-      // Dispatch custom event to update all components
-      window.dispatchEvent(new Event("userUpdated"));
+      // Use auth context to login
+      login(data.user, data.token);
 
       // Redirect to archive list on success
       router.navigate({
