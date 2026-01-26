@@ -71,7 +71,9 @@ function RouteComponent() {
           <h1 className="text-6xl font-bold text-gray-900 mb-4">
             Welcome Back
           </h1>
-          <p className="text-2xl text-gray-600">Sign in to access research archives</p>
+          <p className="text-2xl text-gray-600">
+            Sign in to access research archives
+          </p>
         </div>
 
         {/* Form Card */}
