@@ -50,6 +50,9 @@ function RouteComponent() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
+      // Dispatch custom event to update all components
+      window.dispatchEvent(new Event("userUpdated"));
+
       // Redirect to archive list on success
       router.navigate({
         to: "/archive-list",
