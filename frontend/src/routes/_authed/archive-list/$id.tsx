@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import ArchiveDetailsComponent from "../../components/ArchiveDetailsComponent";
-import { archiveDetailsQueryOptions } from "../../lib/queryOptions";
+import ArchiveDetailsComponent from "../../../components/ArchiveDetailsComponent";
+import { archiveDetailsQueryOptions } from "../../../lib/queryOptions";
 
-export const Route = createFileRoute("/archive-list/$id")({
+export const Route = createFileRoute("/_authed/archive-list/$id")({
 	component: RouteComponent,
 
 	loader: ({ context, params }) => {

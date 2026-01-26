@@ -9,22 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as CreateResearchRouteImport } from './routes/create-research'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthedRouteImport } from './routes/_authed'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ArchiveListIndexRouteImport } from './routes/archive-list/index'
-import { Route as ArchiveListIdRouteImport } from './routes/archive-list/$id'
+import { Route as AuthedCreateResearchRouteImport } from './routes/_authed/create-research'
 import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
+import { Route as AuthedArchiveListIndexRouteImport } from './routes/_authed/archive-list/index'
+import { Route as AuthedArchiveListIdRouteImport } from './routes/_authed/archive-list/$id'
 
-const CreateResearchRoute = CreateResearchRouteImport.update({
-  id: '/create-research',
-  path: '/create-research',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthedRoute = AuthedRouteImport.update({
+  id: '/_authed',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -32,15 +32,10 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ArchiveListIndexRoute = ArchiveListIndexRouteImport.update({
-  id: '/archive-list/',
-  path: '/archive-list/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ArchiveListIdRoute = ArchiveListIdRouteImport.update({
-  id: '/archive-list/$id',
-  path: '/archive-list/$id',
-  getParentRoute: () => rootRouteImport,
+const AuthedCreateResearchRoute = AuthedCreateResearchRouteImport.update({
+  id: '/create-research',
+  path: '/create-research',
+  getParentRoute: () => AuthedRoute,
 } as any)
 const authSignUpRoute = authSignUpRouteImport.update({
   id: '/(auth)/sign-up',
@@ -52,89 +47,99 @@ const authSignInRoute = authSignInRouteImport.update({
   path: '/sign-in',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthedArchiveListIndexRoute = AuthedArchiveListIndexRouteImport.update({
+  id: '/archive-list/',
+  path: '/archive-list/',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedArchiveListIdRoute = AuthedArchiveListIdRouteImport.update({
+  id: '/archive-list/$id',
+  path: '/archive-list/$id',
+  getParentRoute: () => AuthedRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/create-research': typeof CreateResearchRoute
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
-  '/archive-list/$id': typeof ArchiveListIdRoute
-  '/archive-list/': typeof ArchiveListIndexRoute
+  '/create-research': typeof AuthedCreateResearchRoute
+  '/archive-list/$id': typeof AuthedArchiveListIdRoute
+  '/archive-list/': typeof AuthedArchiveListIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/create-research': typeof CreateResearchRoute
   '/sign-in': typeof authSignInRoute
   '/sign-up': typeof authSignUpRoute
-  '/archive-list/$id': typeof ArchiveListIdRoute
-  '/archive-list': typeof ArchiveListIndexRoute
+  '/create-research': typeof AuthedCreateResearchRoute
+  '/archive-list/$id': typeof AuthedArchiveListIdRoute
+  '/archive-list': typeof AuthedArchiveListIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authed': typeof AuthedRouteWithChildren
   '/about': typeof AboutRoute
-  '/create-research': typeof CreateResearchRoute
   '/(auth)/sign-in': typeof authSignInRoute
   '/(auth)/sign-up': typeof authSignUpRoute
-  '/archive-list/$id': typeof ArchiveListIdRoute
-  '/archive-list/': typeof ArchiveListIndexRoute
+  '/_authed/create-research': typeof AuthedCreateResearchRoute
+  '/_authed/archive-list/$id': typeof AuthedArchiveListIdRoute
+  '/_authed/archive-list/': typeof AuthedArchiveListIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
-    | '/create-research'
     | '/sign-in'
     | '/sign-up'
+    | '/create-research'
     | '/archive-list/$id'
     | '/archive-list/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/create-research'
     | '/sign-in'
     | '/sign-up'
+    | '/create-research'
     | '/archive-list/$id'
     | '/archive-list'
   id:
     | '__root__'
     | '/'
+    | '/_authed'
     | '/about'
-    | '/create-research'
     | '/(auth)/sign-in'
     | '/(auth)/sign-up'
-    | '/archive-list/$id'
-    | '/archive-list/'
+    | '/_authed/create-research'
+    | '/_authed/archive-list/$id'
+    | '/_authed/archive-list/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthedRoute: typeof AuthedRouteWithChildren
   AboutRoute: typeof AboutRoute
-  CreateResearchRoute: typeof CreateResearchRoute
   authSignInRoute: typeof authSignInRoute
   authSignUpRoute: typeof authSignUpRoute
-  ArchiveListIdRoute: typeof ArchiveListIdRoute
-  ArchiveListIndexRoute: typeof ArchiveListIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/create-research': {
-      id: '/create-research'
-      path: '/create-research'
-      fullPath: '/create-research'
-      preLoaderRoute: typeof CreateResearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authed': {
+      id: '/_authed'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -144,19 +149,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/archive-list/': {
-      id: '/archive-list/'
-      path: '/archive-list'
-      fullPath: '/archive-list/'
-      preLoaderRoute: typeof ArchiveListIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/archive-list/$id': {
-      id: '/archive-list/$id'
-      path: '/archive-list/$id'
-      fullPath: '/archive-list/$id'
-      preLoaderRoute: typeof ArchiveListIdRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_authed/create-research': {
+      id: '/_authed/create-research'
+      path: '/create-research'
+      fullPath: '/create-research'
+      preLoaderRoute: typeof AuthedCreateResearchRouteImport
+      parentRoute: typeof AuthedRoute
     }
     '/(auth)/sign-up': {
       id: '/(auth)/sign-up'
@@ -172,17 +170,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authSignInRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authed/archive-list/': {
+      id: '/_authed/archive-list/'
+      path: '/archive-list'
+      fullPath: '/archive-list/'
+      preLoaderRoute: typeof AuthedArchiveListIndexRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/archive-list/$id': {
+      id: '/_authed/archive-list/$id'
+      path: '/archive-list/$id'
+      fullPath: '/archive-list/$id'
+      preLoaderRoute: typeof AuthedArchiveListIdRouteImport
+      parentRoute: typeof AuthedRoute
+    }
   }
 }
 
+interface AuthedRouteChildren {
+  AuthedCreateResearchRoute: typeof AuthedCreateResearchRoute
+  AuthedArchiveListIdRoute: typeof AuthedArchiveListIdRoute
+  AuthedArchiveListIndexRoute: typeof AuthedArchiveListIndexRoute
+}
+
+const AuthedRouteChildren: AuthedRouteChildren = {
+  AuthedCreateResearchRoute: AuthedCreateResearchRoute,
+  AuthedArchiveListIdRoute: AuthedArchiveListIdRoute,
+  AuthedArchiveListIndexRoute: AuthedArchiveListIndexRoute,
+}
+
+const AuthedRouteWithChildren =
+  AuthedRoute._addFileChildren(AuthedRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthedRoute: AuthedRouteWithChildren,
   AboutRoute: AboutRoute,
-  CreateResearchRoute: CreateResearchRoute,
   authSignInRoute: authSignInRoute,
   authSignUpRoute: authSignUpRoute,
-  ArchiveListIdRoute: ArchiveListIdRoute,
-  ArchiveListIndexRoute: ArchiveListIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

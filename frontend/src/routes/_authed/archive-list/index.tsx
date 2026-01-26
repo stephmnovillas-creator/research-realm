@@ -1,20 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
-import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PlusCircle } from "lucide-react";
-import React from "react";
-import ArchiveList from "../../components/ArchiveList";
-import { SearchAndFilters } from "../../components/ArchiveSearchAndFilter";
-import type { YEARS } from "../../lib/constants";
-import { archivesQueryOptions } from "../../lib/queryOptions";
+import ArchiveList from "../../../components/ArchiveList";
+import { SearchAndFilters } from "../../../components/ArchiveSearchAndFilter";
+import { useAuth } from "../../../lib/auth";
+import type { YEARS } from "../../../lib/constants";
+import { archivesQueryOptions } from "../../../lib/queryOptions";
 
-export const Route = createFileRoute("/archive-list/")({
+export const Route = createFileRoute("/_authed/archive-list/")({
 	component: RouteComponent,
 	validateSearch: (search) => {
 		if (!search.search && !search.year) {
 			return {
 				search: undefined,
 				year: undefined,
-			};
+			}
 		}
 
 		return {
@@ -22,44 +22,25 @@ export const Route = createFileRoute("/archive-list/")({
 			year: (search.year && search.year !== "all"
 				? String(search.year)
 				: undefined) as (typeof YEARS)[keyof typeof YEARS] | "all" | undefined,
-		};
+		}
 	},
 
 	loaderDeps: ({ search }) => ({
 		search,
 	}),
 	loader: ({ context, deps: { search } }) => {
-		console.log("Loader search param:", search);
-		context.queryClient.ensureQueryData(
+		const { queryClient } = context;
+		queryClient.ensureQueryData(
 			archivesQueryOptions(search.search, search.year),
-		);
+		)
 	},
-	errorComponent: () => <div>Failed to load archives.</div>,
+	errorComponent: ({ error }) => <div>{error.message}</div>,
 });
 
 function RouteComponent() {
-	const router = useRouter();
 	const { search, year } = Route.useSearch();
-	const { data, isLoading } = useQuery(archivesQueryOptions(search, year));
-
-	// Get user from localStorage to check role
-	const [userRole, setUserRole] = React.useState<string | null>(null);
-
-	React.useEffect(() => {
-		const storedUser = localStorage.getItem("user");
-		if (storedUser) {
-			try {
-				const user = JSON.parse(storedUser);
-				setUserRole(user.role);
-			} catch (e) {
-				console.error("Failed to parse user from localStorage", e);
-			}
-		}
-	}, []);
-
-	if (isLoading) {
-		return <div>Loading archives...</div>;
-	}
+	const { data } = useQuery(archivesQueryOptions(search, year));
+	const { isAdmin } = useAuth();
 	if (data === undefined) {
 		return <div>No archives available.</div>;
 	}
@@ -68,7 +49,7 @@ function RouteComponent() {
 		<div className="space-y-6 w-full p-10">
 			<div className="flex justify-between items-center">
 				<h1 className="text-3xl font-bold text-gray-900">Research Archives</h1>
-				{userRole === "ADMIN" && (
+				{isAdmin && (
 					<Link
 						to={"/create-research"}
 						className="flex items-center gap-2 px-4 py-2 bg-[#7a9b76] text-white rounded-lg hover:bg-[#6a8b66] transition-colors font-medium"
@@ -81,5 +62,5 @@ function RouteComponent() {
 			<SearchAndFilters />
 			<ArchiveList papers={data} />
 		</div>
-	);
+	)
 }

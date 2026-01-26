@@ -1,22 +1,24 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { Check, CreditCard, Lock, Mail, User, UserPlus } from "lucide-react";
 import React from "react";
+import { useAuth } from "../../lib/auth";
 
 export const Route = createFileRoute("/(auth)/sign-up")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
-	const router = useRouter();
-	const [firstName, setFirstName] = React.useState("");
-	const [lastName, setLastName] = React.useState("");
-	const [lrn, setLrn] = React.useState("");
-	const [email, setEmail] = React.useState("");
-	const [password, setPassword] = React.useState("");
-	const [confirmPassword, setConfirmPassword] = React.useState("");
-	const [isLoading, setIsLoading] = React.useState(false);
-	const [error, setError] = React.useState("");
-	const [passwordsMatch, setPasswordsMatch] = React.useState(true);
+  const router = useRouter();
+  const { login } = useAuth();
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [lrn, setLrn] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState("");
+  const [passwordsMatch, setPasswordsMatch] = React.useState(true);
 
 	const handlePasswordChange = (value: string) => {
 		setPassword(value);
@@ -71,9 +73,8 @@ function RouteComponent() {
 				return;
 			}
 
-			// Store token in localStorage
-			localStorage.setItem("token", data.token);
-			localStorage.setItem("user", JSON.stringify(data.user));
+      // Use auth context to login
+      login(data.user, data.token);
 
 			// Redirect to archive list on success
 			router.navigate({
