@@ -13,6 +13,11 @@ generator client {
 datasource db {
   provider = "mysql"
 }
+enum Role {
+  STUDENT
+  ADMIN
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   lrn       String   @unique @db.VarChar(12)
@@ -20,6 +25,7 @@ model User {
   lastName  String   @db.VarChar(100)
   email     String   @unique @db.VarChar(255)
   password  String   @db.VarChar(255)
+  role      Role     @default(STUDENT)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

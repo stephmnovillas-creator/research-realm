@@ -25,11 +25,8 @@ router.post("/signup", async (req, res) => {
     // Check if user already exists
     const existingUser = await prisma.user.findFirst({
       where: {
-        OR: [
-          { lrn },
-          { email }
-        ]
-      }
+        OR: [{ lrn }, { email }],
+      },
     });
 
     if (existingUser) {
@@ -50,6 +47,7 @@ router.post("/signup", async (req, res) => {
         lrn,
         email,
         password: hashedPassword,
+        role: "STUDENT",
       },
       select: {
         id: true,
@@ -57,16 +55,15 @@ router.post("/signup", async (req, res) => {
         lastName: true,
         lrn: true,
         email: true,
+        role: true,
         createdAt: true,
       },
     });
 
     // Generate JWT token
-    const token = jwt.sign(
-      { userId: user.id, lrn: user.lrn },
-      JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+    const token = jwt.sign({ userId: user.id, lrn: user.lrn }, JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
     res.status(201).json({
       message: "User created successfully",
@@ -111,11 +108,9 @@ router.post("/signin", async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign(
-      { userId: user.id, lrn: user.lrn },
-      JWT_SECRET,
-      { expiresIn: "7d" }
-    );
+    const token = jwt.sign({ userId: user.id, lrn: user.lrn }, JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
     res.json({
       message: "Login successful",
@@ -125,6 +120,7 @@ router.post("/signin", async (req, res) => {
         lastName: user.lastName,
         lrn: user.lrn,
         email: user.email,
+        role: user.role,
       },
       token,
     });
@@ -143,7 +139,10 @@ router.get("/verify", async (req, res) => {
       return res.status(401).json({ error: "No token provided" });
     }
 
-    const decoded = jwt.verify(token, JWT_SECRET) as { userId: number; lrn: string };
+    const decoded = jwt.verify(token, JWT_SECRET) as {
+      userId: number;
+      lrn: string;
+    };
 
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
@@ -153,6 +152,7 @@ router.get("/verify", async (req, res) => {
         lastName: true,
         lrn: true,
         email: true,
+        role: true,
       },
     });
 
