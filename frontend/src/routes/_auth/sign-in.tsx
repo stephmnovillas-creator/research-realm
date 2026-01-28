@@ -19,7 +19,7 @@ function RouteComponent() {
 		// Only allow digits and limit to 12 characters
 		const numericValue = value.replace(/\D/g, "").slice(0, 12);
 		setLrn(numericValue);
-	}
+	};
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -29,7 +29,7 @@ function RouteComponent() {
 		if (lrn.length !== 12) {
 			setError("LRN must be exactly 12 digits.");
 			setIsLoading(false);
-			return
+			return;
 		}
 
 		try {
@@ -39,31 +39,33 @@ function RouteComponent() {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({ lrn, password }),
-			})
+			});
 
 			const data = await response.json();
 
 			if (!response.ok) {
 				setError(data.error || "Failed to sign in");
-				return
+				return;
 			}
 
 			// Use auth context to login
 			login(data.user, data.token);
 
+			// Invalidate router to pick up new auth state
+			await router.invalidate();
+
 			// Redirect to archive list on success
-			
 			await router.navigate({
 				to: "/archive-list",
 				search: { search: undefined, year: undefined },
-			})
+			});
 		} catch (err) {
 			setError("Failed to sign in. Please check your credentials.");
 			console.error(err);
 		} finally {
 			setIsLoading(false);
 		}
-	}
+	};
 
 	return (
 		<div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4 py-12">
@@ -201,5 +203,5 @@ function RouteComponent() {
 				</p>
 			</div>
 		</div>
-	)
+	);
 }

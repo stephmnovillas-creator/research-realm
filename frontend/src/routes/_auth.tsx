@@ -4,9 +4,7 @@ export const Route = createFileRoute("/_auth")({
 	beforeLoad: ({ context }) => {
 		const { auth } = context;
 
-		console.log(auth);
-
-		// Redirect to sign-in if not authenticated
+		// Redirect to archive-list if already authenticated
 		if (auth.isAuthenticated) {
 			throw redirect({
 				to: "/archive-list",

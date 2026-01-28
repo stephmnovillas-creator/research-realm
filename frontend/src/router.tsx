@@ -10,6 +10,7 @@ export const router = createRouter({
 	routeTree,
 	context: {
 		queryClient,
+		// biome-ignore lint/style/noNonNullAssertion: Will be defined later
 		auth: undefined!,
 	},
 	defaultPreload: "intent",

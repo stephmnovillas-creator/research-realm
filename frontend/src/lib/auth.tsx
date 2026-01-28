@@ -1,4 +1,5 @@
 import React from "react";
+import { queryClient } from "../router";
 import { AuthContext, type User } from "./auth.context";
 
 function getAuthFromLocalStorage(): User | null {
@@ -32,11 +33,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 	const login = (user: User, token: string) => {
 		setUser(user);
 		setStoredAuth(user, token);
+		// Invalidate all queries to refetch with new auth token
+		queryClient.invalidateQueries();
 	};
 
 	const logout = () => {
 		setUser(null);
 		setStoredAuth(null);
+		// Clear all queries from the cache when logging out
+		queryClient.clear();
 	};
 
 	const isAuthenticated = user !== null;

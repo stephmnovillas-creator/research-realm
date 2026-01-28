@@ -1,40 +1,40 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { Check, CreditCard, Lock, Mail, User, UserPlus } from "lucide-react";
 import React from "react";
-import { useAuth } from "../../lib/auth";
+import { useAuth } from "../../lib/useAuth";
 
 export const Route = createFileRoute("/_auth/sign-up")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
-  const router = useRouter();
-  const { login } = useAuth();
-  const [firstName, setFirstName] = React.useState("");
-  const [lastName, setLastName] = React.useState("");
-  const [lrn, setLrn] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [error, setError] = React.useState("");
-  const [passwordsMatch, setPasswordsMatch] = React.useState(true);
+	const router = useRouter();
+	const { login } = useAuth();
+	const [firstName, setFirstName] = React.useState("");
+	const [lastName, setLastName] = React.useState("");
+	const [lrn, setLrn] = React.useState("");
+	const [email, setEmail] = React.useState("");
+	const [password, setPassword] = React.useState("");
+	const [confirmPassword, setConfirmPassword] = React.useState("");
+	const [isLoading, setIsLoading] = React.useState(false);
+	const [error, setError] = React.useState("");
+	const [passwordsMatch, setPasswordsMatch] = React.useState(true);
 
 	const handlePasswordChange = (value: string) => {
 		setPassword(value);
 		setPasswordsMatch(value === confirmPassword);
-	}
+	};
 
 	const handleConfirmPasswordChange = (value: string) => {
 		setConfirmPassword(value);
 		setPasswordsMatch(password === value);
-	}
+	};
 
 	const handleLrnChange = (value: string) => {
 		// Only allow digits and limit to 12 characters
 		const numericValue = value.replace(/\D/g, "").slice(0, 12);
 		setLrn(numericValue);
-	}
+	};
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -42,17 +42,17 @@ function RouteComponent() {
 
 		if (lrn.length !== 12) {
 			setError("LRN must be exactly 12 digits.");
-			return
+			return;
 		}
 
 		if (!passwordsMatch) {
 			setError("Passwords do not match.");
-			return
+			return;
 		}
 
 		if (password.length < 8) {
 			setError("Password must be at least 8 characters long.");
-			return
+			return;
 		}
 
 		setIsLoading(true);
@@ -64,30 +64,34 @@ function RouteComponent() {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({ firstName, lastName, lrn, email, password }),
-			})
+			});
 
 			const data = await response.json();
 
 			if (!response.ok) {
 				setError(data.error || "Failed to create account");
-				return
+				return;
 			}
 
-      // Use auth context to login
-      login(data.user, data.token);
+			// Use auth context to login
+			login(data.user, data.token);
+
+			// Invalidate router to pick up new auth state
+			await router.invalidate();
 
 			// Redirect to archive list on success
-			router.navigate({
+			await router.navigate({
 				to: "/archive-list",
 				search: { search: undefined, year: undefined },
-			})
+			});
+			
 		} catch (err) {
 			setError("Failed to create account. Please try again.");
 			console.error(err);
 		} finally {
 			setIsLoading(false);
 		}
-	}
+	};
 
 	return (
 		<div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4 py-12">
@@ -312,5 +316,5 @@ function RouteComponent() {
 				</p>
 			</div>
 		</div>
-	)
+	);
 }
