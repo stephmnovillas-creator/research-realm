@@ -1,12 +1,13 @@
-import { RouterProvider } from "@tanstack/react-router";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { router } from "./router";
-import "./index.css";
+import InnerApp from "./components/entry/InnerApp";
+import { AuthProvider } from "./lib/auth";
 
 // biome-ignore lint/style/noNonNullAssertion: root present in index.html
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<AuthProvider>
+			<InnerApp />
+		</AuthProvider>
 	</React.StrictMode>,
 );

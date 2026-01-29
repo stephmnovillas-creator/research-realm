@@ -10,12 +10,26 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ProtectedRouteImport } from './routes/_protected'
+import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ArchiveListIndexRouteImport } from './routes/archive-list/index'
+import { Route as ProtectedCreateResearchRouteImport } from './routes/_protected/create-research'
+import { Route as AuthSignUpRouteImport } from './routes/_auth/sign-up'
+import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
+import { Route as ProtectedArchiveListIndexRouteImport } from './routes/_protected/archive-list/index'
+import { Route as ProtectedArchiveListIdRouteImport } from './routes/_protected/archive-list/$id'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtectedRoute = ProtectedRouteImport.update({
+  id: '/_protected',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/_auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -23,40 +37,100 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ArchiveListIndexRoute = ArchiveListIndexRouteImport.update({
-  id: '/archive-list/',
-  path: '/archive-list/',
-  getParentRoute: () => rootRouteImport,
+const ProtectedCreateResearchRoute = ProtectedCreateResearchRouteImport.update({
+  id: '/create-research',
+  path: '/create-research',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const AuthSignUpRoute = AuthSignUpRouteImport.update({
+  id: '/sign-up',
+  path: '/sign-up',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthSignInRoute = AuthSignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => AuthRoute,
+} as any)
+const ProtectedArchiveListIndexRoute =
+  ProtectedArchiveListIndexRouteImport.update({
+    id: '/archive-list/',
+    path: '/archive-list/',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
+const ProtectedArchiveListIdRoute = ProtectedArchiveListIdRouteImport.update({
+  id: '/archive-list/$id',
+  path: '/archive-list/$id',
+  getParentRoute: () => ProtectedRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/archive-list': typeof ArchiveListIndexRoute
+  '/sign-in': typeof AuthSignInRoute
+  '/sign-up': typeof AuthSignUpRoute
+  '/create-research': typeof ProtectedCreateResearchRoute
+  '/archive-list/$id': typeof ProtectedArchiveListIdRoute
+  '/archive-list/': typeof ProtectedArchiveListIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/archive-list': typeof ArchiveListIndexRoute
+  '/sign-in': typeof AuthSignInRoute
+  '/sign-up': typeof AuthSignUpRoute
+  '/create-research': typeof ProtectedCreateResearchRoute
+  '/archive-list/$id': typeof ProtectedArchiveListIdRoute
+  '/archive-list': typeof ProtectedArchiveListIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_auth': typeof AuthRouteWithChildren
+  '/_protected': typeof ProtectedRouteWithChildren
   '/about': typeof AboutRoute
-  '/archive-list/': typeof ArchiveListIndexRoute
+  '/_auth/sign-in': typeof AuthSignInRoute
+  '/_auth/sign-up': typeof AuthSignUpRoute
+  '/_protected/create-research': typeof ProtectedCreateResearchRoute
+  '/_protected/archive-list/$id': typeof ProtectedArchiveListIdRoute
+  '/_protected/archive-list/': typeof ProtectedArchiveListIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/archive-list'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/sign-in'
+    | '/sign-up'
+    | '/create-research'
+    | '/archive-list/$id'
+    | '/archive-list/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/archive-list'
-  id: '__root__' | '/' | '/about' | '/archive-list/'
+  to:
+    | '/'
+    | '/about'
+    | '/sign-in'
+    | '/sign-up'
+    | '/create-research'
+    | '/archive-list/$id'
+    | '/archive-list'
+  id:
+    | '__root__'
+    | '/'
+    | '/_auth'
+    | '/_protected'
+    | '/about'
+    | '/_auth/sign-in'
+    | '/_auth/sign-up'
+    | '/_protected/create-research'
+    | '/_protected/archive-list/$id'
+    | '/_protected/archive-list/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRouteWithChildren
+  ProtectedRoute: typeof ProtectedRouteWithChildren
   AboutRoute: typeof AboutRoute
-  ArchiveListIndexRoute: typeof ArchiveListIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -68,6 +142,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_protected': {
+      id: '/_protected'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof ProtectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -75,20 +163,77 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/archive-list/': {
-      id: '/archive-list/'
+    '/_protected/create-research': {
+      id: '/_protected/create-research'
+      path: '/create-research'
+      fullPath: '/create-research'
+      preLoaderRoute: typeof ProtectedCreateResearchRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_auth/sign-up': {
+      id: '/_auth/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof AuthSignUpRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/sign-in': {
+      id: '/_auth/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof AuthSignInRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_protected/archive-list/': {
+      id: '/_protected/archive-list/'
       path: '/archive-list'
-      fullPath: '/archive-list'
-      preLoaderRoute: typeof ArchiveListIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/archive-list/'
+      preLoaderRoute: typeof ProtectedArchiveListIndexRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/archive-list/$id': {
+      id: '/_protected/archive-list/$id'
+      path: '/archive-list/$id'
+      fullPath: '/archive-list/$id'
+      preLoaderRoute: typeof ProtectedArchiveListIdRouteImport
+      parentRoute: typeof ProtectedRoute
     }
   }
 }
 
+interface AuthRouteChildren {
+  AuthSignInRoute: typeof AuthSignInRoute
+  AuthSignUpRoute: typeof AuthSignUpRoute
+}
+
+const AuthRouteChildren: AuthRouteChildren = {
+  AuthSignInRoute: AuthSignInRoute,
+  AuthSignUpRoute: AuthSignUpRoute,
+}
+
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+
+interface ProtectedRouteChildren {
+  ProtectedCreateResearchRoute: typeof ProtectedCreateResearchRoute
+  ProtectedArchiveListIdRoute: typeof ProtectedArchiveListIdRoute
+  ProtectedArchiveListIndexRoute: typeof ProtectedArchiveListIndexRoute
+}
+
+const ProtectedRouteChildren: ProtectedRouteChildren = {
+  ProtectedCreateResearchRoute: ProtectedCreateResearchRoute,
+  ProtectedArchiveListIdRoute: ProtectedArchiveListIdRoute,
+  ProtectedArchiveListIndexRoute: ProtectedArchiveListIndexRoute,
+}
+
+const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
+  ProtectedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRouteWithChildren,
+  ProtectedRoute: ProtectedRouteWithChildren,
   AboutRoute: AboutRoute,
-  ArchiveListIndexRoute: ArchiveListIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,16 +1,30 @@
-import { createRootRoute, Outlet } from "@tanstack/react-router";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import Header from "../components/Header";
+import type { AuthContext } from "../lib/auth.context";
+import { queryClient } from "../router";
 
 const RootLayout = () => (
-  <>
-    <Header />
-    <Outlet />
-    <TanStackRouterDevtools />
-  </>
+	<QueryClientProvider client={queryClient}>
+		<div className="flex flex-col h-screen">
+			<Header />
+			<div className="flex-1 overflow-auto">
+				<div className="w-full">
+					<Outlet />
+				</div>
+			</div>
+		</div>
+		<TanStackRouterDevtools />
+		<ReactQueryDevtools />
+	</QueryClientProvider>
 );
 
 // Pass the layout to the root route
-export const Route = createRootRoute({
-  component: RootLayout,
+export const Route = createRootRouteWithContext<{
+	queryClient: typeof queryClient;
+	auth: AuthContext;
+}>()({
+	component: RootLayout,
 });
