@@ -1,96 +1,93 @@
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
-import { createResearchMutationOptions } from "../lib/mutationOptions";
+import { createResearchMutationOptions } from "../lib/api/mutations/archives.mutations";
+import { useCreateResearchForm } from "../lib/forms/researchForms";
 
 export default function CreateResearch() {
-	const [formData, setFormData] = useState({
-		title: "",
-		author: "",
-		publishedAt: 2025,
-		abstract: "",
+	const { mutateAsync } = useMutation(createResearchMutationOptions);
+	const form = useCreateResearchForm({
+		onSubmit: async (payload) => {
+			await mutateAsync(payload);
+		},
 	});
-	const { mutate } = useMutation(createResearchMutationOptions);
-
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-		// Here you would gather form data
-
-		mutate(formData);
-	};
-
-	const handleChangeText = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	) => {
-		const { id, value } = e.target;
-
-		setFormData((prevData) => ({
-			...prevData,
-			[id]: value,
-		}));
-	};
 
 	return (
-		<div className="flex flex-col items-center justify-center h-full">
-			<div className="max-w-3xl px-4 w-full">
-				<h2 className="text-2xl font-bold text-[#2d3b2d] mb-6">
-					Add New Research Archive
-				</h2>
-				<form onSubmit={handleSubmit} className="space-y-6">
-					<div className="space-y-2 flex flex-col">
-						<label htmlFor="title">Research Title</label>
-						<input
-							id="title"
-							placeholder="Enter the complete research title"
-							className="focus-visible:ring-[#7a9b76]"
-							value={formData.title}
-							onChange={handleChangeText}
-						/>
-					</div>
-					<div className="space-y-2 flex flex-col">
-						<label htmlFor="author">Author(s)</label>
-						<input
-							id="author"
-							placeholder="e.g., Sarah Johnson"
-							className="focus-visible:ring-[#7a9b76]"
-							value={formData.author}
-							onChange={handleChangeText}
-						/>
-					</div>
-					<div className="space-y-2 flex flex-col">
-						<label htmlFor="publishedAt">Year Published</label>
-						<input
-							type="number"
-							min="1900"
-							max="2099"
-							step="1"
-							value={formData.publishedAt}
-							onChange={(e) => {
-								setFormData((prevData) => ({
-									...prevData,
-									publishedAt: e.target.valueAsNumber,
-								}));
-							}}
-						/>
-					</div>
-					<div className="space-y-2 flex flex-col">
-						<label htmlFor="abstract">Abstract</label>
-						<textarea
-							id="abstract"
-							placeholder="Paste the abstract here..."
-							className="min-h-50 focus-visible:ring-[#7a9b76]"
-							value={formData.abstract}
-							onChange={handleChangeText}
-						/>
-					</div>
-					<div className="flex justify-end pt-4">
-						<button
-							type="submit"
-							className="bg-[#7a9b76] hover:bg-[#6a8b66] text-white py-2 px-8 rounded-md"
-						>
-							Add Archive
-						</button>
-					</div>
-				</form>
+		<div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+			<div className="w-full rounded-2xl border border-[#dfe7dc] bg-white p-6 shadow-sm sm:p-8">
+				<h2 className="mb-6 text-2xl font-bold text-[#2d3b2d]">Add New Research Archive</h2>
+				<form.AppForm>
+					<form
+						onSubmit={(event) => {
+							event.preventDefault();
+							event.stopPropagation();
+							void form.handleSubmit();
+						}}
+						className="space-y-6"
+					>
+						<form.Subscribe selector={(state) => state.errorMap.onSubmit}>
+							{(submitError) =>
+								typeof submitError === "string" ? (
+									<div className="bg-red-50 border border-red-200 rounded-lg p-4">
+										<p className="text-red-700 text-sm font-medium">{submitError}</p>
+									</div>
+								) : null
+							}
+						</form.Subscribe>
+
+						<form.AppField name="title">
+							{(field) => (
+								<field.FormTextField
+									label="Research Title"
+									placeholder="Enter the complete research title"
+									className="focus-visible:ring-[#7a9b76]"
+								/>
+							)}
+						</form.AppField>
+
+						<form.AppField name="author">
+							{(field) => (
+								<field.FormTextField
+									label="Author(s)"
+									placeholder="e.g., Sarah Johnson"
+									className="focus-visible:ring-[#7a9b76]"
+								/>
+							)}
+						</form.AppField>
+
+						<form.AppField name="publishedAt">
+							{(field) => (
+								<field.FormTextField
+									label="Year Published"
+									type="number"
+									min="1900"
+									max="2099"
+									step="1"
+									normalizeValue={(value) =>
+										value === "" ? "" : Number.parseInt(value, 10)
+									}
+									className="focus-visible:ring-[#7a9b76]"
+								/>
+							)}
+						</form.AppField>
+
+						<form.AppField name="abstract">
+							{(field) => (
+								<field.FormTextareaField
+									label="Abstract"
+									placeholder="Paste the abstract here..."
+									className="min-h-50 focus-visible:ring-[#7a9b76]"
+								/>
+							)}
+						</form.AppField>
+
+						<div className="flex justify-end pt-4">
+							<form.FormSubmitButton
+								label="Add Archive"
+								submittingLabel="Adding Archive..."
+								className="rounded-md bg-[#7a9b76] px-8 py-2 text-white hover:bg-[#6a8b66]"
+							/>
+						</div>
+					</form>
+				</form.AppForm>
 			</div>
 		</div>
 	);

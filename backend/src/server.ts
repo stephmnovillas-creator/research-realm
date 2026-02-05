@@ -65,6 +65,7 @@ app.get("/archives/:id", async (req, res) => {
 });
 
 app.post("/archives", async (req, res) => {
+  console.log("Received POST /archives request with body:", req.body);
   const { title, author, abstract, publishedAt } = req.body;
   const newResearch = await prisma.research.create({
     data: {

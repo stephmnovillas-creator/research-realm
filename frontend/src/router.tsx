@@ -2,7 +2,7 @@ import { createRouter, ErrorComponent } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import "./index.css";
 import { QueryClient } from "@tanstack/react-query";
-import type { AuthContext } from "./lib/auth.context";
+import type { AuthContext } from "./lib/auth/auth.context";
 
 export const queryClient = new QueryClient();
 
