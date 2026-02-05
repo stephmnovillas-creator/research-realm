@@ -46,6 +46,7 @@ function InputGroupAddon({
 	...props
 }: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
 	return (
+		// biome-ignore lint/a11y/useKeyWithClickEvents: This div is not interactive and only focuses the input when clicked, which is a common pattern for input addons.
 		<div
 			role="group"
 			data-slot="input-group-addon"
