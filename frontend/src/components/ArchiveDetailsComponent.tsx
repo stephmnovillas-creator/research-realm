@@ -68,12 +68,21 @@ export default function ArchiveDetailsComponent({
 					Research Information
 				</h2>
 
+				<div className="mb-6 rounded-lg border border-[#dfe7dc] bg-[#f7faf6] p-4">
+					<p className="text-sm font-medium text-gray-600 mb-2">APA Citation</p>
+					<p className="text-gray-800 wrap-break-word">
+						{research.citation ?? "Citation not available."}
+					</p>
+				</div>
+
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<div>
 						<p className="text-sm font-medium text-gray-500 mb-1">
 							Research ID
 						</p>
-						<p className="text-gray-800">{research.id}</p>
+						<p className="text-gray-800">
+							{research.researchId ?? research.id}
+						</p>
 					</div>
 
 					<div>
