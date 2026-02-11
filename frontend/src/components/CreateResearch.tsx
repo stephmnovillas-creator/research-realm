@@ -13,7 +13,9 @@ export default function CreateResearch() {
 	return (
 		<div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
 			<div className="w-full rounded-2xl border border-[#dfe7dc] bg-white p-6 shadow-sm sm:p-8">
-				<h2 className="mb-6 text-2xl font-bold text-[#2d3b2d]">Add New Research Archive</h2>
+				<h2 className="mb-6 text-2xl font-bold text-[#2d3b2d]">
+					Add New Research Archive
+				</h2>
 				<form.AppForm>
 					<form
 						onSubmit={(event) => {
@@ -27,7 +29,9 @@ export default function CreateResearch() {
 							{(submitError) =>
 								typeof submitError === "string" ? (
 									<div className="bg-red-50 border border-red-200 rounded-lg p-4">
-										<p className="text-red-700 text-sm font-medium">{submitError}</p>
+										<p className="text-red-700 text-sm font-medium">
+											{submitError}
+										</p>
 									</div>
 								) : null
 							}
