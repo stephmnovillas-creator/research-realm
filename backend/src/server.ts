@@ -1,8 +1,12 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-import { prisma } from "./lib/prisma";
 import authRoutes from "./(auth)/auth.routes";
+import { prisma } from "./lib/prisma";
+import {
+  generateApaCitation,
+  generateResearchId,
+} from "./lib/research-generation";
 
 const PORT = process.env.PORT || 5000;
 
@@ -11,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.send("Research Realm Backend is running");
 });
 
@@ -23,8 +27,10 @@ app.get("/archives", async (req, res) => {
   const archives = await prisma.research.findMany({
     select: {
       author: true,
+      citation: true,
       id: true,
       publishedAt: true,
+      researchId: true,
       title: true,
     },
     where: {
@@ -66,13 +72,85 @@ app.get("/archives/:id", async (req, res) => {
 
 app.post("/archives", async (req, res) => {
   console.log("Received POST /archives request with body:", req.body);
-  const { title, author, abstract, publishedAt } = req.body;
+  const { title, author, abstract, publishedAt, researchId, citation } =
+    req.body;
+
+  if (!title || !author || !abstract || !publishedAt) {
+    return res.status(400).json({
+      error: "title, author, abstract, and publishedAt are required",
+    });
+  }
+
+  const parsedYear = Number(publishedAt);
+  if (!Number.isFinite(parsedYear)) {
+    return res.status(400).json({ error: "publishedAt must be a valid year" });
+  }
+
+  let normalizedResearchId =
+    typeof researchId === "string" && researchId.trim()
+      ? researchId.trim()
+      : "";
+
+  if (!normalizedResearchId) {
+    const yearPrefix = `${parsedYear}-`;
+    const existingIds = await prisma.research.findMany({
+      where: {
+        researchId: {
+          startsWith: yearPrefix,
+        },
+      },
+      select: {
+        researchId: true,
+      },
+    });
+
+    const maxSequence = existingIds.reduce((highest, item) => {
+      if (!item.researchId) {
+        return highest;
+      }
+
+      const suffix = item.researchId.replace(yearPrefix, "");
+      const parsedSequence = Number.parseInt(suffix, 10);
+      if (!Number.isFinite(parsedSequence)) {
+        return highest;
+      }
+
+      return Math.max(highest, parsedSequence);
+    }, 0);
+
+    normalizedResearchId = generateResearchId(parsedYear, maxSequence + 1);
+  }
+
+  if (!/^\d{4}-\d{3}$/.test(normalizedResearchId)) {
+    return res.status(400).json({
+      error: "researchId must follow YYYY-### format",
+    });
+  }
+
+  const existingResearch = await prisma.research.findUnique({
+    where: { researchId: normalizedResearchId },
+    select: { id: true },
+  });
+
+  if (existingResearch) {
+    return res.status(409).json({
+      error: `Research ID ${normalizedResearchId} already exists`,
+    });
+  }
+
+  const normalizedCitation =
+    typeof citation === "string" && citation.trim()
+      ? citation.trim()
+      : generateApaCitation(String(author), parsedYear, String(title));
+
   const newResearch = await prisma.research.create({
     data: {
       title,
       author,
       abstract,
-      publishedAt,
+      publishedAt: parsedYear,
+      researchId: normalizedResearchId,
+      citation: normalizedCitation,
     },
   });
   res.status(201).json(newResearch);
