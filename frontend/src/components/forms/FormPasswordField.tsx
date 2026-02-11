@@ -1,30 +1,34 @@
-import type React from "react";
-import { Field, FieldContent, FieldDescription, FieldError, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import { Eye, EyeOff } from "lucide-react";
+import { type ReactNode, useState } from "react";
+import {
+	Field,
+	FieldContent,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+} from "@/components/ui/field";
+import {
+	InputGroup,
+	InputGroupAddon,
+	InputGroupButton,
+	InputGroupInput,
+	InputGroupText,
+} from "@/components/ui/input-group";
 import { useFieldContext } from "@/lib/forms/formContext";
 import { cn } from "@/lib/utils/cn";
+import { toOptionalMessage } from "@/lib/utils/toMessage";
 
-type InputProps = Omit<React.ComponentProps<typeof Input>, "value" | "onChange" | "onBlur" | "name" | "type">;
+type InputProps = Omit<
+	React.ComponentProps<"input">,
+	"value" | "onChange" | "onBlur" | "name" | "type"
+>;
 
 export interface FormPasswordFieldProps extends InputProps {
 	label: string;
 	description?: string;
-	icon?: React.ReactNode;
-	rightAdornment?: React.ReactNode;
+	icon?: ReactNode;
+	rightAdornment?: ReactNode;
 	containerClassName?: string;
-}
-
-function errorToText(error: unknown): string | null {
-	if (typeof error === "string") {
-		return error;
-	}
-
-	if (error && typeof error === "object" && "message" in error) {
-		const message = (error as { message?: unknown }).message;
-		return typeof message === "string" ? message : null;
-	}
-
-	return null;
 }
 
 export function FormPasswordField({
@@ -38,39 +42,56 @@ export function FormPasswordField({
 	...props
 }: FormPasswordFieldProps) {
 	const field = useFieldContext<string>();
+	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 	const fieldId = id ?? String(field.name);
 	const rawErrors = field.state.meta.errors;
-	const errorMessage = rawErrors.map(errorToText).find(Boolean) ?? null;
+	const errorMessage = rawErrors.map(toOptionalMessage).find(Boolean) ?? null;
 	const isInvalid = field.state.meta.isTouched && Boolean(errorMessage);
 
 	return (
 		<Field data-invalid={isInvalid} className={containerClassName}>
 			<FieldLabel htmlFor={fieldId}>{label}</FieldLabel>
 			<FieldContent>
-				<div className="relative">
-					{icon ? (
-						<span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-							{icon}
-						</span>
-					) : null}
-					<Input
+				<InputGroup className={cn(className)} {...props}>
+					<InputGroupInput
 						id={fieldId}
-						type="password"
+						type={isPasswordVisible ? "text" : "password"}
 						name={String(field.name)}
 						value={field.state.value ?? ""}
 						onBlur={field.handleBlur}
 						onChange={(event) => field.handleChange(event.currentTarget.value)}
 						aria-invalid={isInvalid}
-						className={cn(icon && "pl-12", rightAdornment && "pr-12", className)}
-						{...props}
 					/>
-					{rightAdornment ? (
-						<span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-							{rightAdornment}
-						</span>
+					{icon ? (
+						<InputGroupAddon align="inline-start" className="text-gray-400">
+							<InputGroupText>{icon}</InputGroupText>
+						</InputGroupAddon>
 					) : null}
-				</div>
-				{description ? <FieldDescription>{description}</FieldDescription> : null}
+					<InputGroupAddon align="inline-end" className="text-gray-500">
+						{rightAdornment ? (
+							<InputGroupText>{rightAdornment}</InputGroupText>
+						) : null}
+						<InputGroupButton
+							type="button"
+							size="icon-xs"
+							tabIndex={-1}
+							onMouseDown={(event) => {
+								event.preventDefault();
+							}}
+							onClick={() => setIsPasswordVisible((previous) => !previous)}
+							aria-label={isPasswordVisible ? "Hide password" : "Show password"}
+						>
+							{isPasswordVisible ? (
+								<EyeOff className="size-4" />
+							) : (
+								<Eye className="size-4" />
+							)}
+						</InputGroupButton>
+					</InputGroupAddon>
+				</InputGroup>
+				{description ? (
+					<FieldDescription>{description}</FieldDescription>
+				) : null}
 				{isInvalid ? <FieldError>{errorMessage}</FieldError> : null}
 			</FieldContent>
 		</Field>

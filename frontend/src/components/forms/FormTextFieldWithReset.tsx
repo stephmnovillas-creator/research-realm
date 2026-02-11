@@ -1,3 +1,4 @@
+import { RotateCcw } from "lucide-react";
 import type React from "react";
 import {
 	Field,
@@ -6,39 +7,46 @@ import {
 	FieldError,
 	FieldLabel,
 } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import {
+	InputGroup,
+	InputGroupAddon,
+	InputGroupButton,
+	InputGroupInput,
+	InputGroupText,
+} from "@/components/ui/input-group";
 import { useFieldContext } from "@/lib/forms/formContext";
 import { cn } from "@/lib/utils/cn";
 import { toOptionalMessage } from "@/lib/utils/toMessage";
 
 type InputProps = Omit<
-	React.ComponentProps<typeof Input>,
+	React.ComponentProps<"input">,
 	"value" | "onChange" | "onBlur" | "name"
 >;
 
-export interface FormTextFieldProps extends InputProps {
+export interface FormTextFieldWithResetProps extends InputProps {
 	label: string;
 	description?: string;
 	icon?: React.ReactNode;
-	rightAdornment?: React.ReactNode;
 	normalizeValue?: (value: string) => string | number;
 	onValueChange?: (value: string | number) => void;
+	showReset?: boolean;
+	onReset?: () => void;
 	containerClassName?: string;
 }
 
-export function FormTextField({
+export function FormTextFieldWithReset({
 	label,
 	description,
 	icon,
-	rightAdornment,
 	normalizeValue,
 	onValueChange,
+	showReset,
+	onReset,
 	containerClassName,
 	id,
 	className,
-	type = "text",
 	...props
-}: FormTextFieldProps) {
+}: FormTextFieldWithResetProps) {
 	const field = useFieldContext<unknown>();
 	const fieldId = id ?? String(field.name);
 	const rawErrors = field.state.meta.errors;
@@ -49,15 +57,14 @@ export function FormTextField({
 		<Field data-invalid={isInvalid} className={containerClassName}>
 			<FieldLabel htmlFor={fieldId}>{label}</FieldLabel>
 			<FieldContent>
-				<div className="relative">
+				<InputGroup>
 					{icon ? (
-						<span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-							{icon}
-						</span>
+						<InputGroupAddon align="inline-start" className="text-gray-400">
+							<InputGroupText>{icon}</InputGroupText>
+						</InputGroupAddon>
 					) : null}
-					<Input
+					<InputGroupInput
 						id={fieldId}
-						type={type}
 						name={String(field.name)}
 						value={String(field.state.value ?? "")}
 						onBlur={field.handleBlur}
@@ -70,19 +77,26 @@ export function FormTextField({
 							onValueChange?.(nextValue);
 						}}
 						aria-invalid={isInvalid}
-						className={cn(
-							icon && "pl-12",
-							rightAdornment && "pr-12",
-							className,
-						)}
+						className={cn(className)}
 						{...props}
 					/>
-					{rightAdornment ? (
-						<span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-							{rightAdornment}
-						</span>
+					{showReset ? (
+						<InputGroupAddon align="inline-end" className="text-gray-500">
+							<InputGroupButton
+								type="button"
+								size="icon-xs"
+								tabIndex={-1}
+								onMouseDown={(event) => {
+									event.preventDefault();
+								}}
+								onClick={onReset}
+								aria-label="Reset generated value"
+							>
+								<RotateCcw className="size-3.5" />
+							</InputGroupButton>
+						</InputGroupAddon>
 					) : null}
-				</div>
+				</InputGroup>
 				{description ? (
 					<FieldDescription>{description}</FieldDescription>
 				) : null}

@@ -1,3 +1,4 @@
+import { RotateCcw } from "lucide-react";
 import type React from "react";
 import {
 	Field,
@@ -6,40 +7,42 @@ import {
 	FieldError,
 	FieldLabel,
 } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+import {
+	InputGroup,
+	InputGroupAddon,
+	InputGroupButton,
+	InputGroupTextarea,
+} from "@/components/ui/input-group";
 import { useFieldContext } from "@/lib/forms/formContext";
 import { cn } from "@/lib/utils/cn";
 import { toOptionalMessage } from "@/lib/utils/toMessage";
 
-type InputProps = Omit<
-	React.ComponentProps<typeof Input>,
+type TextareaProps = Omit<
+	React.ComponentProps<"textarea">,
 	"value" | "onChange" | "onBlur" | "name"
 >;
 
-export interface FormTextFieldProps extends InputProps {
+export interface FormTextareaFieldWithResetProps extends TextareaProps {
 	label: string;
 	description?: string;
-	icon?: React.ReactNode;
-	rightAdornment?: React.ReactNode;
-	normalizeValue?: (value: string) => string | number;
-	onValueChange?: (value: string | number) => void;
+	onValueChange?: (value: string) => void;
+	showReset?: boolean;
+	onReset?: () => void;
 	containerClassName?: string;
 }
 
-export function FormTextField({
+export function FormTextareaFieldWithReset({
 	label,
 	description,
-	icon,
-	rightAdornment,
-	normalizeValue,
 	onValueChange,
+	showReset,
+	onReset,
 	containerClassName,
 	id,
 	className,
-	type = "text",
 	...props
-}: FormTextFieldProps) {
-	const field = useFieldContext<unknown>();
+}: FormTextareaFieldWithResetProps) {
+	const field = useFieldContext<string>();
 	const fieldId = id ?? String(field.name);
 	const rawErrors = field.state.meta.errors;
 	const errorMessage = rawErrors.map(toOptionalMessage).find(Boolean) ?? null;
@@ -49,40 +52,38 @@ export function FormTextField({
 		<Field data-invalid={isInvalid} className={containerClassName}>
 			<FieldLabel htmlFor={fieldId}>{label}</FieldLabel>
 			<FieldContent>
-				<div className="relative">
-					{icon ? (
-						<span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-							{icon}
-						</span>
-					) : null}
-					<Input
+				<InputGroup className="h-auto items-start">
+					<InputGroupTextarea
 						id={fieldId}
-						type={type}
 						name={String(field.name)}
-						value={String(field.state.value ?? "")}
+						value={field.state.value ?? ""}
 						onBlur={field.handleBlur}
 						onChange={(event) => {
-							const rawValue = event.currentTarget.value;
-							const nextValue = normalizeValue
-								? normalizeValue(rawValue)
-								: rawValue;
-							field.handleChange(nextValue);
-							onValueChange?.(nextValue);
+							field.handleChange(event.currentTarget.value);
+							onValueChange?.(event.currentTarget.value);
 						}}
 						aria-invalid={isInvalid}
-						className={cn(
-							icon && "pl-12",
-							rightAdornment && "pr-12",
-							className,
-						)}
+						className={cn(className)}
 						{...props}
 					/>
-					{rightAdornment ? (
-						<span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-							{rightAdornment}
-						</span>
+					{showReset ? (
+						<InputGroupAddon align="block-end" className="">
+							<InputGroupButton
+								type="button"
+								size="icon-xs"
+								tabIndex={-1}
+								onMouseDown={(event) => {
+									event.preventDefault();
+								}}
+								onClick={onReset}
+								aria-label="Reset generated value"
+								className={"flex"}
+							>
+								<RotateCcw className="size-3.5" />
+							</InputGroupButton>
+						</InputGroupAddon>
 					) : null}
-				</div>
+				</InputGroup>
 				{description ? (
 					<FieldDescription>{description}</FieldDescription>
 				) : null}
