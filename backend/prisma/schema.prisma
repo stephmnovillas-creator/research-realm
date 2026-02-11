@@ -38,6 +38,8 @@ model Research {
   title       String   @db.Text
   abstract    String   @db.Text
   author      String   @db.Text
+  researchId  String?  @unique @db.VarChar(8)
+  citation    String?  @db.Text
   publishedAt Int      @db.Year 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt @default(now())

@@ -3,9 +3,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PlusCircle } from "lucide-react";
 import ArchiveList from "../../../components/ArchiveList";
 import { SearchAndFilters } from "../../../components/ArchiveSearchAndFilter";
-import type { YEARS } from "../../../lib/constants";
-import { archivesQueryOptions } from "../../../lib/queryOptions";
-import { useAuth } from "../../../lib/useAuth";
+import { archivesQueryOptions } from "../../../lib/api/queries/archives.queries";
+import { useAuth } from "../../../lib/auth/auth.hooks";
+import type { YEARS } from "../../../lib/config/constants";
 
 export const Route = createFileRoute("/_protected/archive-list/")({
 	component: RouteComponent,
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/_protected/archive-list/")({
 			return {
 				search: undefined,
 				year: undefined,
-			}
+			};
 		}
 
 		return {
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/_protected/archive-list/")({
 			year: (search.year && search.year !== "all"
 				? String(search.year)
 				: undefined) as (typeof YEARS)[keyof typeof YEARS] | "all" | undefined,
-		}
+		};
 	},
 
 	loaderDeps: ({ search }) => ({
@@ -32,18 +32,41 @@ export const Route = createFileRoute("/_protected/archive-list/")({
 		const { queryClient } = context;
 		queryClient.ensureQueryData(
 			archivesQueryOptions(search.search, search.year),
-		)
+		);
 	},
 	errorComponent: ({ error }) => <div>{error.message}</div>,
 });
 
+function ArchiveListSkeleton() {
+	return (
+		<div className="overflow-hidden rounded-lg bg-white shadow-sm">
+			<div className="grid grid-cols-[2fr_0.7fr_1.3fr_0.7fr] gap-4 border-b border-gray-300 bg-[#d4dcd0] px-6 py-3">
+				<div className="h-5 w-24 animate-pulse rounded bg-gray-300/70" />
+				<div className="h-5 w-16 animate-pulse rounded bg-gray-300/70" />
+				<div className="h-5 w-20 animate-pulse rounded bg-gray-300/70" />
+				<div className="h-5 w-10 animate-pulse justify-self-end rounded bg-gray-300/70" />
+			</div>
+			<div className="space-y-3 px-6 py-4">
+				{Array.from({ length: 6 }).map((_, index) => (
+					<div
+						key={`archive-skeleton-${index}`}
+						className="grid grid-cols-[2fr_0.7fr_1.3fr_0.7fr] gap-4 py-2"
+					>
+						<div className="h-4 w-full animate-pulse rounded bg-gray-200" />
+						<div className="h-4 w-14 animate-pulse rounded bg-gray-200" />
+						<div className="h-4 w-40 animate-pulse rounded bg-gray-200" />
+						<div className="h-4 w-16 animate-pulse justify-self-end rounded bg-gray-200" />
+					</div>
+				))}
+			</div>
+		</div>
+	);
+}
+
 function RouteComponent() {
 	const { search, year } = Route.useSearch();
-	const { data } = useQuery(archivesQueryOptions(search, year));
+	const { data, isLoading } = useQuery(archivesQueryOptions(search, year));
 	const { isAdmin } = useAuth();
-	if (data === undefined) {
-		return <div>No archives available.</div>;
-	}
 
 	return (
 		<div className="space-y-6 w-full p-10">
@@ -58,9 +81,13 @@ function RouteComponent() {
 						Add Research
 					</Link>
 				)}
+				</div>
+				<SearchAndFilters />
+				{isLoading ? (
+					<ArchiveListSkeleton />
+				) : (
+					<ArchiveList papers={data ?? []} />
+				)}
 			</div>
-			<SearchAndFilters />
-			<ArchiveList papers={data} />
-		</div>
-	)
+		);
 }

@@ -2,12 +2,14 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { Toaster } from "@/components/ui/sonner";
 import Header from "../components/Header";
-import type { AuthContext } from "../lib/auth.context";
+import type { AuthContext } from "../lib/auth/auth.context";
 import { queryClient } from "../router";
 
 const RootLayout = () => (
 	<QueryClientProvider client={queryClient}>
+		<Toaster position="top-center" />
 		<div className="flex flex-col h-screen">
 			<Header />
 			<div className="flex-1 overflow-auto">
