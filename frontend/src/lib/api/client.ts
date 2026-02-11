@@ -33,8 +33,24 @@ export async function apiFetch<T>(
   });
 
   if (!response.ok) {
-    const errorMessage = await response.text().catch(() => "Unknown error");
-    throw new Error(`API Error (${response.status}): ${errorMessage}`);
+    const rawError = await response.text().catch(() => "Unknown error");
+    let parsedMessage = rawError;
+
+    try {
+      const parsed = JSON.parse(rawError) as {
+        error?: unknown;
+        message?: unknown;
+      };
+      if (typeof parsed.error === "string") {
+        parsedMessage = parsed.error;
+      } else if (typeof parsed.message === "string") {
+        parsedMessage = parsed.message;
+      }
+    } catch {
+      // Keep raw text as fallback when response is not JSON.
+    }
+
+    throw new Error(`API Error (${response.status}): ${parsedMessage}`);
   }
 
   return response.json();
