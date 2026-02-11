@@ -15,6 +15,11 @@ export default defineConfig([
 			reactHooks.configs.flat.recommended,
 			reactRefresh.configs.vite,
 		],
+		rules: {
+			reactRefresh: {
+				"react-refresh/only-export-components": "off",
+			},
+		},
 		languageOptions: {
 			ecmaVersion: 2020,
 			globals: globals.browser,
