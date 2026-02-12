@@ -7,7 +7,7 @@ import {
 	UserCircle,
 } from "lucide-react";
 import React from "react";
-import { useAuth } from "../lib/useAuth";
+import { useAuth } from "../lib/auth/auth.hooks";
 
 export default function Header() {
 	const router = useRouter();

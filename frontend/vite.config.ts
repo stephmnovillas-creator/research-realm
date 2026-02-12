@@ -17,6 +17,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@backend": path.resolve(__dirname, "../backend/src"),
+       "@": path.resolve(__dirname, "./src"),
     },
     // preserveSymlinks is safe to keep, though often not strictly necessary with simple aliases
     preserveSymlinks: true,

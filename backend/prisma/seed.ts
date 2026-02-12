@@ -66,6 +66,8 @@ async function main() {
         title: data.title,
         abstract: data.abstract,
         author: data.author,
+        researchId: data.researchId,
+        citation: data.citation,
         publishedAt: data.publishedAt,
       },
     });
