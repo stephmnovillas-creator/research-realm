@@ -1,7 +1,7 @@
 import { getRouteApi, useRouter } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import React from "react";
-import { YEARS } from "../lib/constants";
+import { YEARS } from "../lib/config/constants";
 
 const archiveListRouteApi = getRouteApi("/_protected/archive-list/");
 

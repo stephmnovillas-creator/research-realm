@@ -1,9 +1,11 @@
 export const researchData2018 = [
   {
-    title:
-      "ANTIFUNGAL ACTIVITY OF BITTER VINE (Mikania micrantha) LEAF EXTRACT ON Aspergillus flavus",
+    title: "ANTIFUNGAL ACTIVITY OF BITTER VINE (Mikania micrantha) LEAF EXTRACT ON Aspergillus flavus",
     publishedAt: 2018,
+    researchId: "2018-001",
     author: "SHEIMIL B. MADRONES, JAN ALEXIS J. ARROYO, MAREX C. FAJARDO",
+    citation: "Madrones, S. B., Arroyo, J. A. J., Fajardo, M. C. (2018). ANTIFUNGAL ACTIVITY OF BITTER VINE (Mikania micrantha) LEAF EXTRACT ON Aspergillus flavus.",
+    abstract: "This study aims to know the antifungal activity of bitter vine (mikania micrantha) leaf extract on aspergillus flavus. Results revealed that 100% and 50% extract showed antifungal activity. The researchers concluded that 100% and 50% bitter vine leaf extract had an antifungal activity on aspergillus flavus.",
     abstract: `
       This study aims to determine the antifungal activity of bitter vine (Mikania micrantha) leaf extract against Aspergillus flavus. The ethanolic method was used for extraction. One kilogram of leaves was cut into small pieces, air-dried for one week, immersed in one liter of ethanol for 48 hours with regular shaking, and filtered using filter paper. The filtrate underwent solvent extraction using a rotary evaporator to obtain an oily green extract.
 
@@ -13,10 +15,13 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "ANTIFUNGAL ACTIVITY OF GUYABANO (Annona muricata) LEAF EXTRACT ON Aspergillus flavus",
+    title: "ANTIFUNGAL ACTIVITY OF GUYABANO (Annona muricata) LEAF EXTRACT ON Aspergillus flavus",
     publishedAt: 2018,
+    researchId: "2018-002",
     author: "MILDRED M. MONTALBAN, REINA DANECCA P. PLANCO",
+    citation: "Montalban, M. M., Planco, R. D. P. (2018). ANTIFUNGAL ACTIVITY OF GUYABANO (Annona muricata) LEAF EXTRACT ON Aspergillus flavus.",
+    abstract: "This study aimed to find out the antifungal activity of guyabano leaf extract on Aspergillus flavus. Results revealed that 50% and 100% concentrations were effective, with 50% being the most effective.",
+  },
     abstract:`
       This study was conducted at West Visayas State University on February 13, 2018 with the aim to find out the antifungal activity of guyabano (Annona muricata) leaf extract on Aspergillus flavus.
 
@@ -28,9 +33,12 @@ export const researchData2018 = [
     `,
   },   
   {
-    title:
-      "CYTOTOXIC ACTIVITY OF GUAVA, JACKFRUIT AND COCONUT LEAVES EXTRACT USING BRINE SHRIMP LETHALITY ASSAY",
+    title: "CYTOTOXIC ACTIVITY OF GUAVA, JACKFRUIT AND COCONUT LEAVES EXTRACT USING BRINE SHRIMP LETHALITY ASSAY",
     publishedAt: 2018,
+    researchId: "2018-003",
+    author: "JESSA MAE S. LOPEZ, PEARL VENICE C. SEPAYA, CRYSTELLE ANN R. MARQUILENCIA",
+    citation: "Lopez, J. M. S., Sepaya, P. V. C., Marquilencia, C. A. R. (2018). CYTOTOXIC ACTIVITY OF GUAVA, JACKFRUIT AND COCONUT LEAVES EXTRACT USING BRINE SHRIMP LETHALITY ASSAY.",
+    abstract: "Fresh Psidium guajava, Artocarpus heterophyllus and Cocos nucifera leaves were tested. Results revealed that the ethanolic extracts showed good brine shrimp cytotoxic activity (LC50 values below 1000 ug/mL).",
     author:
       "JESSA MAE S. LOPEZ, PEARL VENICE C. SEPAYA, CRYSTELLE ANN R. MARQUILENCIA",
     abstract:`
@@ -42,10 +50,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "THE PESTICIDAL EFFECT OF SKY FRUIT, CHILI PEPPER, AND BETEL LEAVES POWDER ON GOLDEN APPLE SNAILS",
+    title: "THE PESTICIDAL EFFECT OF SKY FRUIT, CHILI PEPPER, AND BETEL LEAVES POWDER ON GOLDEN APPLE SNAILS",
     publishedAt: 2018,
+    researchId: "2018-004",
     author: "JHISTINE CLYDE A. BLANCAFLOR, JIMSON G. KUSOG, NOVELYN R. CLAMOR",
+    citation: "Blancaflor, J. C. A., Kusog, J. G., Clamor, N. R. (2018). THE PESTICIDAL EFFECT OF SKY FRUIT, CHILI PEPPER, AND BETEL LEAVES POWDER ON GOLDEN APPLE SNAILS.",
+    abstract: "Sky fruit powder and commercial pesticides showed the greatest number of dead snails. ANOVA revealed sky fruit powder has a high significant effect on killing golden apple snails.",
     abstract:`
       Sky fruit, chili pepper and betel leaves were tested for their pesticidal effect on golden apple snails by applying 5 grams of sky fruit powder, chili pepper and betel leaves on 15 containers with 10 golden apple snails each. This aimed to determine if sky fruit powder, chili pepper and betel leaves are effective pesticides on farm pests such as golden apple snails. There were five treatments: Treatment A (Sky fruit powder), Treatment B (Chili pepper powder), Treatment C (Betel leaves powder), Treatment D (Commercial pesticide), and Treatment E (Pure tap water). The treatments were replicated thrice. The data were gathered after 24 hours ofapplication.
     
@@ -55,10 +65,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "PESTICIDAL EFFECT OF MAKABUHAY (Tinospora rumphii Boerl) ON THE PHILIPPINE MILK TERMITES",
+    title: "PESTICIDAL EFFECT OF MAKABUHAY (Tinospora rumphii Boerl) ON THE PHILIPPINE MILK TERMITES",
     publishedAt: 2018,
+    researchId: "2018-005",
     author: "KRISTINE VERL S. MANDARIO",
+    citation: "Mandario, K. V. S. (2018). PESTICIDAL EFFECT OF MAKABUHAY (Tinospora rumphii Boerl) ON THE PHILIPPINE MILK TERMITES.",
+    abstract: "The study used 150g, 300g, and 400g concentrations of stem extract. Results show that makabuhay stem extract is effective in killing Philippine milk termites.",
     abstract:`
       This work highlights the problem of killing termites. The study was conducted to know the effect of Tinospora rumphii boerl stem extract which locally known in the Philippines as makabuhay is one of the most  common plants being used to treat various ailments. Tinospora rumphii boerl stems are more effective than roots. Its stem was gathered,washed, cut, weighed and subjected to an extraction method to effectively eliminate the insect (J. Chairman et al., 2006).
     
@@ -66,9 +78,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "THE POTENTIAL OF PEANUT (Arachis hypogaea) SHELL STARCH AS A COMPONENT IN MAKING BIO-PLASTIC",
+    title: "THE POTENTIAL OF PEANUT (Arachis hypogaea) SHELL STARCH AS A COMPONENT IN MAKING BIO-PLASTIC",
     publishedAt: 2018,
+    researchId: "2018-006",
+    author: "CYRA JANNE C. MASCULIN, AELRED MAURICE R. TORMON, EMMANUEL M. ESCAÑO JR.",
+    citation: "Masculin, C. J. C., Tormon, A. M. R., Jr., E. M. E. (2018). THE POTENTIAL OF PEANUT (Arachis hypogaea) SHELL STARCH AS A COMPONENT IN MAKING BIO-PLASTIC.",
+    abstract: "Various treatments using peanut shell starch solution were tested. Results revealed that peanut shell starch is not an effective component due to the resulting bio-plastic's fragility.",
     author:
       "CYRA JANNE C. MASCULIN, AELRED MAURICE R. TORMON, EMMANUEL M. ESCAÑO JR.",
     abstract:`
@@ -80,10 +95,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "ANTIBACTERIAL ACTIVITY OF AHITO (Tagetes erecta) LEAF OINTMENT ON Staphylococcus aureus",
+    title: "ANTIBACTERIAL ACTIVITY OF AHITO (Tagetes erecta) LEAF OINTMENT ON Staphylococcus aureus",
     publishedAt: 2018,
+    researchId: "2018-007",
     author: "ERBIE MARIE S. RANGAS, JONNAH G. PADILLA, ALEHA MARIE H. ANGELADA",
+    citation: "Rangas, E. M. S., Padilla, J. G., Angelada, A. M. H. (2018). ANTIBACTERIAL ACTIVITY OF AHITO (Tagetes erecta) LEAF OINTMENT ON Staphylococcus aureus.",
+    abstract: "This research assessed the effectiveness of Ahito leaf ointment against Staphylococcus aureus skin infections. It discusses how bacteria normally reside on the skin but can cause infections like cellulitis or boils.",
     abstract:`
       Skin infection is one of the biggest health problems of humans that started from a simple scratch and leads to serious damage to our body Philippines, as a fast-growing country is currently facing a lot of struggles in dealing with skin infections that is timely and relevant to the country and to its people. According to Pathak (2017), viruses, bacteria, and fungi can all cause the infection in our skin and even to our other body organs. Bacteria are living organisms that can be found everywhere; many are harmless or even good for the human body, but some can cause problems.
     
@@ -91,10 +108,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "EFFECTIVENESS OF COMPLETE IDENTITY INFORMATION BAR CODE SYSTEM VERSUS MANUAL CHECKING",
+    title: "EFFECTIVENESS OF COMPLETE IDENTITY INFORMATION BAR CODE SYSTEM VERSUS MANUAL CHECKING",
     publishedAt: 2018,
+    researchId: "2018-008",
     author: "ALVIE JOHN P. ALAG, SCHARLET T. LIPA, JAMES IVAN P. SUMINGIT",
+    citation: "Alag, A. J. P., Lipa, S. T., Sumingit, J. I. P. (2018). EFFECTIVENESS OF COMPLETE IDENTITY INFORMATION BAR CODE SYSTEM VERSUS MANUAL CHECKING.",
+    abstract: "Tested at the senior high guard house, results revealed that time spent authenticating student information was significantly reduced compared to manual checking.",
     abstract:`
       This study aims to determine the Effectiveness of Complete Identity Information Bar Code System versus Manual Checking of Student's Identity using bar code and bar code scanner. This study was conducted at Cabatuan National Comprehensive High School, Senior High School guard house on February 5-9, 2018.
 
@@ -108,7 +127,10 @@ export const researchData2018 = [
   {
     title: "ANTIFUNGAL EFFECT OF HAUILI (Ficus septica blanco) LEAF EXTRACT",
     publishedAt: 2018,
+    researchId: "2018-009",
     author: "JANINE SEPTER D. PADILLA, SAILESA G. SAMAR, RANNILYN P. NAVIO",
+    citation: "Padilla, J. S. D., Samar, S. G., Navio, R. P. (2018). ANTIFUNGAL EFFECT OF HAUILI (Ficus septica blanco) LEAF EXTRACT.",
+    abstract: "One kilogram of Hauili leaves was extracted via rotary evaporation. Results revealed that 100% and 50% concentrations showed antifungal activity against Aspergillus flavus.",
     abstract:`
       This study was conducted at West Visayas State University, Central Science Laboratory on February 13, 2018 with the aim to find out the antifungal effect of the different concentrations of Hauili (Ficus septica blanco) Leaf Extract on Aspergillus flavus.
 
@@ -120,9 +142,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "AN ASSESSMENT ON THE COLOR CHANGE OF BLUE TERNATE FLOWER EXTRACT AS NATURAL PH INDICATORS",
+    title: "AN ASSESSMENT ON THE COLOR CHANGE OF BLUE TERNATE FLOWER EXTRACT AS NATURAL PH INDICATORS",
     publishedAt: 2018,
+    researchId: "2018-010",
+    author: "JOHN JOSHUA C. DE GUIA, JULIA SHANE R. BARRIOS, JUN SUN A. MAGEANAM",
+    citation: "De Guia, J. J. C., Barrios, J. S. R., Mageanam, J. S. A. (2018). AN ASSESSMENT ON THE COLOR CHANGE OF BLUE TERNATE FLOWER EXTRACT AS NATURAL PH INDICATORS.",
+    abstract: "Findings showed that Blue Ternate (Clitoria ternatea) pH indicators demonstrate color change when subjected to solutions with different pH values from 0 to 14.",
     author:
       "JOHN JOSHUA C. DE GUIA, JULIA SHANE R. BARRIOS, JUN SUN A. MAGEANAM",
     abstract:`
@@ -136,9 +161,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "TURMERIC (Curcuma longa) EXTRACT AS AN ANTIBACTERIAL FOR Staphylococcus epidermidis",
+    title: "TURMERIC (Curcuma longa) EXTRACT AS AN ANTIBACTERIAL FOR Staphylococcus epidermidis",
     publishedAt: 2018,
+    researchId: "2018-011",
+    author: "PAMELA SUE HILADA, BASHRACEL MARIE SALMORIN, DANICA DANIELE SERRANO",
+    citation: "Hilada, P. S., Salmorin, B. M., Serrano, D. D. (2018). TURMERIC (Curcuma longa) EXTRACT AS AN ANTIBACTERIAL FOR Staphylococcus epidermidis.",
+    abstract: "Agar well diffusion was used to test various concentrations. Turmeric extract showed an antibacterial effect on Staphylococcus epidermidis in terms of zone of inhibition.",
     author:
       "PAMELA SUE HILADA, BASHRACEL MARIE SALMORIN, DANICA DANIELE SERRANO",
     abstract:`
@@ -150,10 +178,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "BLOOD CLOTTING POTENTIAL OF (Gliricidia sepium) LEAF AND CAMBIUM EXTRACT",
+    title: "BLOOD CLOTTING POTENTIAL OF (Gliricidia sepium) LEAF AND CAMBIUM EXTRACT",
     publishedAt: 2018,
+    researchId: "2018-012",
     author: "EMMANUEL J. JORDAN, SHAINA FAITH S. LAQUIHON, CARL JOVE PINEDA",
+    citation: "Jordan, E. J., Laquihon, S. F. S., Pineda, C. J. (2018). BLOOD CLOTTING POTENTIAL OF (Gliricidia sepium) LEAF AND CAMBIUM EXTRACT.",
+    abstract: "Utilized Lee-White's Method. ANOVA revealed no significant difference in clotting time compared to normal blood, and in some cases, it took longer for the blood to clot.",
     abstract:`
       Medicines and remedies such as blood coagulants in the far-flung rural areas are quite inaccessible and are scarce in number which increases the possibility to acquire certain infection from untreated wounds and cuts. The researcher produced an alternative way of treating wounds which utilized the leaf and cambium extract of Gliricidia sepium plant. This study intends to determine the blood clotting activity of Gliricidia sepium leaf and cambium extract on human blood. The blood samples used in the study were drawn from a volunteer. The Lee-White's Method was used to determine the blood coagulation activity of Gliricidia sepium leaf and cambium extract on human blood samples.
     
@@ -163,7 +193,10 @@ export const researchData2018 = [
   {
     title: "EFFECTIVENESS OF MOBILE ACTIVATED POWER SWITCH (MAPS)",
     publishedAt: 2018,
+    researchId: "2018-013",
     author: "JESSIE ANN C. BERONDO, JOEY F. CABALLERO, NOVIE MARIE M. BEÑARES",
+    citation: "Berondo, J. A. C., Caballero, J. F., Beñares, N. M. M. (2018). EFFECTIVENESS OF MOBILE ACTIVATED POWER SWITCH (MAPS).",
+    abstract: "A remote-controlled device tested at a distance of 3km. Results showed the device is effective in saving time, energy, and money compared to manual switching.",
     abstract:`
       This study was conducted to find the efficiency and effectiveness of the Mobile Activated Power Switch (MAPS) The materials were assembled at Cabatuan National Comprehensive High School and was conducted at Ilaya Street, Cabatuan to Brgy Bacan, Cabatuan.
     
@@ -175,6 +208,10 @@ export const researchData2018 = [
   {
     title: "THE ACCEPTABILITY OF COCONUT (Cocos nucifera) OIL AS A SHOE POLISH",
     publishedAt: 2018,
+    researchId: "2018-014",
+    author: "CHRISTINE JOY C. PATCHES, SAINT PATRICK P. ENERIO, PERCY ANNE A. HUESCA",
+    citation: "Patches, C. J. C., Enerio, S. P. P., Huesca, P. A. A. (2018). THE ACCEPTABILITY OF COCONUT (Cocos nucifera) OIL AS A SHOE POLISH.",
+    abstract: "Tested by 20 students. Coconut oil shoe polish was found acceptable in terms of effect, duration of shine, and smell compared to commercial products.",
     author:
       "CHRISTINE JOY C. PATCHES, SAINT PATRICK P. ENERIO, PERCY ANNE A. HUESCA",
     abstract:`
@@ -184,10 +221,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "FUNGICIDAL ACTIVITY OF THE DIFFERENT CONCENTRATIONS OF SEA SALT SOLUTION ON Candida albicans",
+    title: "FUNGICIDAL ACTIVITY OF THE DIFFERENT CONCENTRATIONS OF SEA SALT SOLUTION ON Candida albicans",
     publishedAt: 2018,
+    researchId: "2018-015",
     author: "ELLAINE RARE M. JUNIO",
+    citation: "Junio, E. R. M. (2018). FUNGICIDAL ACTIVITY OF THE DIFFERENT CONCENTRATIONS OF SEA SALT SOLUTION ON Candida albicans.",
+    abstract: "Agar Well Diffusion was used for testing. Results showed that different concentrations of sea salt solution have no antifungal effect on Candida albicans.",
     abstract:`
       The study was conducted to find out the fungicidal activity of the different concentrations of sea salt solution on Candida albicans. The study was conducted at West Visayas State University Central Science Laboratory, La Paz, Iloilo City last January 12, 2018.
     
@@ -197,19 +236,23 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "COCONUT OIL (Cocos nucifera) AS AN EFFECTIVE HOUSEFLY (Musca domestica) ELMINATOR",
+    title: "COCONUT OIL (Cocos nucifera) AS AN EFFECTIVE HOUSEFLY (Musca domestica) ELMINATOR",
     publishedAt: 2018,
+    researchId: "2018-016",
     author: "KENYA M. COMEDA",
+    citation: "Comeda, K. M. (2018). COCONUT OIL (Cocos nucifera) AS AN EFFECTIVE HOUSEFLY (Musca domestica) ELMINATOR.",
+    abstract: "Determined the effectiveness of coconut oil versus a chemical solution. Analysis showed coconut oil is effective in killing houseflies through multiple trials.",
     abstract:`
       Housefly (Musca domestica) became one of the worst problem in the community. They are one of the most common insects and which can be found in the houses. Houseflies commonly develop in large numbers. We conducted a researcher which can help everyone in eliminating houseflies. We used a coconut (Cocos nucifera) oil as our instruments to kill houseflies (Musca domestica). We made a trials which the maximum of four in determining the effectiveness of coconut oil. Coconut oil was compared to a chemical solution to determine which is effective in killing houseflies. According to the interpretation of data analysis coconut oil is effective in killing houseflies.
     `,
   },
   {
-    title:
-      "ANTIBACTERIAL EFFECT OF SINAW SINAW (Peperomia pellucida) LEAF EXTRACT ON Staphylococcus aureus",
+    title: "ANTIBACTERIAL EFFECT OF SINAW SINAW (Peperomia pellucida) LEAF EXTRACT ON Staphylococcus aureus",
     publishedAt: 2018,
+    researchId: "2018-017",
     author: "KATRINA ANN L. DELA TORRE, SIERRA MAY M. BABIARTE",
+    citation: "Dela Torre, K. A. L., Babiarte, S. M. M. (2018). ANTIBACTERIAL EFFECT OF SINAW SINAW (Peperomia pellucida) LEAF EXTRACT ON Staphylococcus aureus.",
+    abstract: "Tested various concentrations. Results showed that 100% pure Sinaw sinaw leaf extract is the most effective antibacterial treatment against Staphylococcus aureus.",
     abstract:`
       This study was conducted to determine the effectiveness of Sinaw sinaw (Peperomia pellucida) leaf extract as an antibacterial against Staphylococcus aureus. The study was conducted at the Central Laboratory of West Visayas State University at La Paz, Iloilo on January 6, 2018.
     
@@ -217,9 +260,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "ANTI-ANGIOGENIC ACTIVITY OF CALABASH (Crescentia cujete) LEAF EXTRACT",
+    title: "ANTI-ANGIOGENIC ACTIVITY OF CALABASH (Crescentia cujete) LEAF EXTRACT",
     publishedAt: 2018,
+    researchId: "2018-018",
+    author: "FRANCIS MATHEW M. GAPPE, MARVIN B. MALIFICIAR, CAMELLA BEATRICE L. VALLE",
+    citation: "Gappe, F. M. M., Malificiar, M. B., Valle, C. B. L. (2018). ANTI-ANGIOGENIC ACTIVITY OF CALABASH (Crescentia cujete) LEAF EXTRACT.",
+    abstract: "Used in ovo (Anas platyrhynchos) CAM assay. Results revealed Calabash leaf extract exhibits anti-angiogenic activity significantly different from the negative control.",
     author:
       "FRANCIS MATHEW M. GAPPE, MARVIN B. MALIFICIAR, CAMELLA BEATRICE L. VALLE",
     abstract:`
@@ -229,10 +275,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "ANTIMICROBIAL EFFECT OF PARAGIS (Eleusine indica Linn.) GRASS EXTRACT ON UTI-CAUSING BACTERIA",
+    title: "ANTIMICROBIAL EFFECT OF PARAGIS (Eleusine indica Linn.) GRASS EXTRACT ON UTI-CAUSING BACTERIA",
     publishedAt: 2018,
+    researchId: "2018-019",
     author: "SEAN ANJELO C. HALABA, CIARA MARIE C. BERNARDO, JEAN RAY D. REYES",
+    citation: "Halaba, S. A. C., Bernardo, C. M. C., Reyes, J. R. D. (2018). ANTIMICROBIAL EFFECT OF PARAGIS (Eleusine indica Linn.) GRASS EXTRACT ON UTI-CAUSING BACTERIA.",
+    abstract: "Paragis grass was extracted using a juicer. Results showed that the grass extract had no antimicrobial effect on Escherichia coli in terms of zone of inhibition.",
     abstract:`
       The study entitled the Antimicrobial Effect of Paragis (Eleusine indica Linn.) on UTI-causing Bacteria was conducted at West Visayas State University Biology Laboratory on January 8, 2018.
     
@@ -242,10 +290,12 @@ export const researchData2018 = [
       `,
   },
   {
-    title:
-      "CYTOTOXICITY AND ANTI-ANGIOGENIC ACTIVITY OF TUBLI (Derris elliptica Benth.) LEAF EXTRACT",
+    title: "CYTOTOXICITY AND ANTI-ANGIOGENIC ACTIVITY OF TUBLI (Derris elliptica Benth.) LEAF EXTRACT",
     publishedAt: 2018,
+    researchId: "2018-020",
     author: "ROMNICK A. SULIT, JESSA G. ALEMANI NOVIE, JENDEL M. SALIGANAN",
+    citation: "Sulit, R. A., Novie, J. G. A., Saliganan, J. M. (2018). CYTOTOXICITY AND ANTI-ANGIOGENIC ACTIVITY OF TUBLI (Derris elliptica Benth.) LEAF EXTRACT.",
+    abstract: "Determined LC50 for Tubli leaf extract (160.349 g/mL), showing significant cytotoxic activity. 200 and 300 ppm treatments showed significant anti-angiogenic activity.",
     abstract:`
       With the emerging number of people who are diagnosed with cancer, innovations in making a new medical breakthrough that can be an alternative to the expensive surgery and therapies for the disease must be investigated. A medical breakthrough which is cheaper yet the effectiveness is remarkable. And this could pertain to the investigation on the potential of our traditional plants.
     
@@ -255,10 +305,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "EFFECTIVENESS OF PAPAYA (Carica papaya Linn.) LEAF EXTRACT AS A BLOOD COAGULANT",
+    title: "EFFECTIVENESS OF PAPAYA (Carica papaya Linn.) LEAF EXTRACT AS A BLOOD COAGULANT",
     publishedAt: 2018,
+    researchId: "2018-021",
     author: "CARL ANDRAE A. JULIANO, RHYZA C. PASADILLA, JHUN CARL N. PANIZA",
+    citation: "Juliano, C. A. A., Pasadilla, R. C., Paniza, J. C. N. (2018). EFFECTIVENESS OF PAPAYA (Carica papaya Linn.) LEAF EXTRACT AS A BLOOD COAGULANT.",
+    abstract: "Tested on human blood types A, B, AB, and O. It was concluded that papaya leaf extract is not effective as a general blood coagulant across all types tested.",
     abstract:`
       This study was conducted at Ramon Tabiana Memorial District Hospital Cabatuan, Iloilo on January 6, 2018 to find out the effectiveness of papaya leaves extract as a blood coagulant on different human blood types samples. Fresh leaves of Papaya weighing two hundred grams were extracted using a mortar and pestle and a clean white cloth, there were three treatments used in this study: treatment A (Papaya Leaf Extract), treatment B (Betadine), and treatment C (Normal Clotting Time). The effectiveness of each treatment as a blood coagulant on different human blood type samples was determined using a Lee-White method. The data gathered were analyzed statistically using ANOVA and DMRT. Results revealed that the clotting time of the blood types A, B, AB, and O with Papaya leaves extract is the fastest among the rest of the treatments. However, in blood types B and AB, it is not significantly different from that of negative control (no application).
     
@@ -266,10 +318,12 @@ export const researchData2018 = [
     `,    
   },
   {
-    title:
-      "PESTICIDAL EFFECT OF HAGONOY (Chromolaena odorata) IN MOSQUITO (Culicidae)",
+    title: "PESTICIDAL EFFECT OF HAGONOY (Chromolaena odorata) IN MOSQUITO (Culicidae)",
     publishedAt: 2018,
+    researchId: "2018-022",
     author: "KIMBERLY E. LLADO, JOHN RENZ P. HEREZO",
+    citation: "Llado, K. E., Herezo, J. R. P. (2018). PESTICIDAL EFFECT OF HAGONOY (Chromolaena odorata) IN MOSQUITO (Culicidae).",
+    abstract: "Pesticide made by pounding Hagonoy and squeezing extract. Based on results, the extract can be used as a safer pesticide to kill mosquitoes.",
     abstract:`
       Pesticides is one of the basic needs to lessen the population of mosquitoes and to avoid fevers and dengues. This kind of pesticide is more eligible to use due to its capacity to kill mosquito and its safer values. This study aims to determine the pesticidal effect of Hagony (Chromolaena odorata) in mosquitoes (Culicidae).
     
@@ -279,10 +333,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "LARVICIDAL ACTIVITY OF KAYOS (Dioscorea hispida) LEAF EXTRACT ON MOSQUITO WRIGGLERS",
+    title: "LARVICIDAL ACTIVITY OF KAYOS (Dioscorea hispida) LEAF EXTRACT ON MOSQUITO WRIGGLERS",
     publishedAt: 2018,
+    researchId: "2018-023",
     author: "JUDY M. SUBANG, ARNIE GRACE Q. MORENO",
+    citation: "Subang, J. M., Moreno, A. G. Q. (2018). LARVICIDAL ACTIVITY OF KAYOS (Dioscorea hispida) LEAF EXTRACT ON MOSQUITO WRIGGLERS.",
+    abstract: "Ethanolic extract tested against wrigglers. Results showed 1000 ppm extract significantly affected mortality, with an LC50 of 1055.513 ppm after 48 hours.",
     abstract:`
       Dengue and malaria cases are growing quickly and difficult to control in our country today. Hence, many people search to discover different ways to stop this dengue and malaria causing mosquitoes from reproducing and multiplying. One of the ways to prevent this is through the use of larvicides. Yet, some larvicides are hazardous not only to mosquitoes but also to human being and the environment. The objective of this research is to create a larvicide that would not affect the environment and humans.
     
@@ -292,10 +348,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "POWDERED TALABA (Crossastrea gigas) SHELL AS A COMPONENT IN MAKING CANDLES",
+    title: "POWDERED TALABA (Crossastrea gigas) SHELL AS A COMPONENT IN MAKING CANDLES",
     publishedAt: 2018,
+    researchId: "2018-024",
     author: "KENNETH A. TIONGSON, SHENNA I. SOBRETODO, LILIBEN JOHN C. VERA",
+    citation: "Tiongson, K. A., Sobretodo, S. I., Vera, L. J. C. (2018). POWDERED TALABA (Crossastrea gigas) SHELL AS A COMPONENT IN MAKING CANDLES.",
+    abstract: "Tested powdered shell mixed with wax. Results revealed the addition of powdered Talaba shell has no significant effect on how long the candle lasts.",
     abstract:`
       This research aimed to determine the effects of powdered Talaba (Crossastrea gigas) that mixed with wax of a candle. It is benefited by users who always use candles at night. This research will provide information if the powdered Talaba (Crossastrea gigas) shell mixed by wax of a candle is effective than the traditional candle.
     
@@ -307,10 +365,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "EFFECTIVENESS OF DALANGHITA, LEMONGRASS AND OREGANO AS INSECTICIDAL SPRAY ON TERMITES",
+    title: "EFFECTIVENESS OF DALANGHITA, LEMONGRASS AND OREGANO AS INSECTICIDAL SPRAY ON TERMITES",
     publishedAt: 2018,
+    researchId: "2018-025",
     author: "ELLA SALADAR, PRINCESS GELIN, MAEGAN VALERIE GENIT",
+    citation: "Saladar, E., Gelin, P., Genit, M. V. (2018). EFFECTIVENESS OF DALANGHITA, LEMONGRASS AND OREGANO AS INSECTICIDAL SPRAY ON TERMITES.",
+    abstract: "Results revealed Dalanghita peel, Lemongrass, and Oregano leaf extracts have the same significant insecticidal effect against Dampwood termites.",
     abstract:`
       This study aimed to determine the effectiveness of the different levels of concentration of Dalanghita (Citrus nobilis) Peel Extract, Lemongrass (Cymbopogon citratus) and Oregano (Oreganum vulgare) Leaf Extracts as an Insecticidal spray on Dampwood termites (Zootermopsis augusticollis). This study was conducted at Brgy. Ayaman, Cabatuan, Iloilo on January 8, 2018.
     
@@ -320,9 +380,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "ISOLATION AND IDENTIFICATION OF AIRBORNE BACTERIA AROUND AND WITHIN THE LANDFILL",
+    title: "ISOLATION AND IDENTIFICATION OF AIRBORNE BACTERIA AROUND AND WITHIN THE LANDFILL",
     publishedAt: 2018,
+    researchId: "2018-026",
+    author: "COLLEEN KATE D. LICERA, CHENNIE M. PASTRANA, ROMELA MARIE P. MANATE",
+    citation: "Licera, C. K. D., Pastrana, C. M., Manate, R. M. P. (2018). ISOLATION AND IDENTIFICATION OF AIRBORNE BACTERIA AROUND AND WITHIN THE LANDFILL.",
+    abstract: "Airborne bacteria isolated from Brgy. Inaladan landfill include E. faecalis, E. coli, E. aerogenes, K. pneumonieae, and Staphylococcus aureus.",
     author:
       "COLLEEN KATE D. LICERA, CHENNIE M. PASTRANA, ROMELA MARIE P. MANATE",
     abstract:`
@@ -334,10 +397,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "QUALITATIVE COLOR CHANGE ASSESSMENT OF BANANA BLOSSOM BRACTS PIGMENT AS PH INDICATORS",
+    title: "QUALITATIVE COLOR CHANGE ASSESSMENT OF BANANA BLOSSOM BRACTS PIGMENT AS PH INDICATORS",
     publishedAt: 2018,
+    researchId: "2018-027",
     author: "ATHENA BEATRICE R. ABORDO, FREDDIRICK ERL B. PLAMIANO",
+    citation: "Abordo, A. B. R., Plamiano, F. E. B. (2018). QUALITATIVE COLOR CHANGE ASSESSMENT OF BANANA BLOSSOM BRACTS PIGMENT AS PH INDICATORS.",
+    abstract: "Banana blossom can be a source of pigment for pH paper and liquid indicators, showing versatility in detecting pH levels in commercial solutions.",
     abstract:`
       Indicators play a special role in Chemistry in determining pH of solutions. Natural indicators derived from plants' extract are preferable due to their environmental and safety values. This study aims to assess the color change of banana (Musa paradisiaca var. Sab a) blossom bracts pigment to be used as pH indicators. The study was conducted at the Chemistry Laboratory of West Visayas State University-Main Campus, La Paz, Iloilo on December 28, 2017.
     
@@ -347,10 +412,12 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "THE BIODEGRADABILITY OF RIPE SABA BANANA FRUIT PEELINGS TREATED WITH HYDROCHLORIC ACID",
+    title: "THE BIODEGRADABILITY OF RIPE SABA BANANA FRUIT PEELINGS TREATED WITH HYDROCHLORIC ACID",
     publishedAt: 2018,
+    researchId: "2018-028",
     author: "CHARLENE B. NIEBLA, THERESE MARIE B. GABASA",
+    citation: "Niebla, C. B., Gabasa, T. M. B. (2018). THE BIODEGRADABILITY OF RIPE SABA BANANA FRUIT PEELINGS TREATED WITH HYDROCHLORIC ACID.",
+    abstract: "Tested various concentrations of HCI. Results showed that the higher the concentration of HCI, the faster the banana peels degrade into bioplastic.",
     abstract:`
       This study was conducted to test the biodegradability of ripe saba banana fruit peelings treated with different concentrations of HCI.
 
@@ -360,10 +427,13 @@ export const researchData2018 = [
     `,
   },
   {
-    title:
-      "ANTI-OXIDATIVE PROPERTY OF TALISAY (Terminalia catappa) LEAF EXTRACT",
+    title: "ANTI-OXIDATIVE PROPERTY OF TALISAY (Terminalia catappa) LEAF EXTRACT",
     publishedAt: 2018,
+    researchId: "2018-029",
     author: "RECHEL MAE P. SUBADE, ALLIAH KAY V. MENDOZA, JONA ANN C. CAMIN",
+    citation: "Subade, R. M. P., Mendoza, A. K., Camin, J. A. C. (2018). ANTI-OXIDATIVE PROPERTY OF TALISAY (Terminalia catappa) LEAF EXTRACT.",
+    abstract: "The DPPH radical scavenging method was used. Methanolic extracts of Talisay leaves showed a high anti-oxidative property (DPPH scavenging effect).",
+  }
     abstract:`
       Free radicals are a crucial part of the immune system, floating through the veins and attacking foreign invaders. Antioxidant systems help defend the body against Reactive oxygen species (ROS) but may be overwhelmed during periods of oxidative stress, which can cause lipid peroxidation, damage to DNA, and cell death. Antioxidants are substances that may protect cells in your body from free radical damage that can occur from exposure to certain chemicals, smoking, pollution, radiation, and as a byproduct of normal metabolism.
     

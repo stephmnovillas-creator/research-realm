@@ -1,21 +1,22 @@
-
-
 type SuccessReturn<T> = {
   data: T;
   success: true;
   error: null;
-}
+};
 
 type ErrorReturn<E> = {
   data: null;
   success: false;
   error: E;
-}
+};
 
 /**
  * A utility function that wraps a promise-returning function in a try-catch block.
+ * Returns a discriminated union with success/error state.
  */
-async function tryCatch<T>(fn: () => Promise<T>): Promise<SuccessReturn<T> | ErrorReturn<string>> {
+export async function tryCatch<T>(
+  fn: () => Promise<T>,
+): Promise<SuccessReturn<T> | ErrorReturn<string>> {
   try {
     const result = await fn();
     return { data: result, success: true, error: null };
@@ -25,5 +26,3 @@ async function tryCatch<T>(fn: () => Promise<T>): Promise<SuccessReturn<T> | Err
     return { data: null, success: false, error: errorMessage };
   }
 }
-
-export { tryCatch };
