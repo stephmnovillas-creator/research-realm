@@ -72,11 +72,11 @@ export const researchData2024 = [
     title: "SHELF-LIFE ENHANCEMENT OF Carica papaya USING ZINC OXIDE AS NANOPARTICLES",
     publishedAt: 2024,
     researchId: "2024-005",
-    author: "LAMPARERO, JAPETH M., CHICHIRITA, ELLA CARYLLE FAYE E., DY, TRINA MARIE C., ESTREVILLO, MARY HOPE C., MANA-AY, TRISIA CLAIRE P., MASIADO, CHRISTINE JOY N., MONTEFRIO, ANGELICA MARIE M.",
+    author: "JAPETH M. LAMPARERO, ELLA CARYLLE FAYE E. CHICHIRITA, TRINA MARIE C. DY, MARY HOPE C. ESTREVILLO, TRISIA CLAIRE P. MANAAY, CHRISTINE JOY N. MASIADO, ANGELICA MARIE M. MONTEFRIO",
     citation: "Lamparero, J. M., Chichirita, E. C. F. E., Dy, T. M. C., Estrevillo, M. H. C., Mana-Ay, T. C. P., Masiado, C. J. N., Montefrio, A. M. M. (2024). SHELF-LIFE ENHANCEMENT OF Carica papaya USING ZINC OXIDE AS NANOPARTICLES.",
     abstract: "Designed to determine the effect of Zinc Oxide nanoparticles on the shelf-life of papaya. Results indicated that while some concentrations slowed mass loss, there was no significant difference compared to the negative control.",
     author:
-      "LAMPARERO, JAPETH M., CHICHIRITA, ELLA CARYLLE FAYE E., DY, TRINA MARIE C., ESTREVILLO, MARY HOPE C., MANA-AY, TRISIA CLAIRE P., MASIADO, CHRISTINE JOY N., MONTEFRIO, ANGELICA MARIE M.",
+      "JAPETH M. LAMPARERO, ELLA CARYLLE FAYE E. CHICHIRITA, TRINA MARIE C. DY, MARY HOPE C. ESTREVILLO, TRISIA CLAIRE P. MANAAY, CHRISTINE JOY N. MASIADO, ANGELICA MARIE M. MONTEFRIO",
     abstract:`
     The rapid ripening of locally grown Carica papaya is a problem in the quality of production. However, fruit ripening of papaya has been genetically modified to extend its shelf life (Geetika et al., 2018). This study was designed to determine the effect of Zinc oxide as a nanoparticle in shelf-life enhancement of Carica papaya in terms of mass (g) loss.
     
@@ -89,11 +89,11 @@ export const researchData2024 = [
     title: "A COMPARATIVE ANALYSIS ON THE EFFECTIVITY OF SABA BANANA (Musa acuminata x balbisiana) PEELS AND SUGARCANE (Saccharum officinarum) PEELS AS ALTERNATIVE FEEDS FOR AFRICAN CATFISH (Clarias gariepinus)",
     publishedAt: 2024,
     researchId: "2024-006",
-    author: "CAYABYAB, PRANCE NATHANIEL, DARADAR, LOUIE JOHN, ESCANDA, ACESHELLE MARIE, MEDIANESTA, ANN MONIQUE, MENDOZA, GLORIA ELIZABETH, SERVITA, PRILENE, VELASCO, JARA KEZIAH",
+    author: "PRANCE NATHANIEL CAYABYAB, LOUIE JOHN DARADAR, ACESHELLE MARIE ESCANDA, ANN MONIQUE MEDIANESTA, GLORIA ELIZABETH MENDOZA, PRILENE SERVITA, JARA KEZIAH VELASCO",
     citation: "Cayabyab, P. N., Daradar, L. J., Escanda, A. M., Medianesta, A. M., Mendoza, G. E., Servita, P., Velasco, J. K. (2024). A COMPARATIVE ANALYSIS ON THE EFFECTIVITY OF SABA BANANA (Musa acuminata x balbisiana) PEELS AND SUGARCANE (Saccharum officinarum) PEELS AS ALTERNATIVE FEEDS FOR AFRICAN CATFISH (Clarias gariepinus).",
     abstract: "Examined banana and sugarcane peels as catfish feed. ANOVA showed no significant difference between treatments, but Saba banana peels yielded slightly higher average weight gain in the African catfish.",
     author:
-      "CAYABYAB, PRANCE NATHANIEL, DARADAR, LOUIE JOHN, ESCANDA, ACESHELLE MARIE, MEDIANESTA, ANN MONIQUE, MENDOZA, GLORIA ELIZABETH, SERVITA, PRILENE, VELASCO, JARA KEZIAH",
+      "PRANCE NATHANIEL CAYABYAB, LOUIE JOHN DARADAR, ACESHELLE MARIE ESCANDA, ANN MONIQUE MEDIANESTA, GLORIA ELIZABETH MENDOZA, PRILENE SERVITA, JARA KEZIAH VELASCO",
     abstract:`
     
       Catfish play a major role in economic development and advancement, especially in the aquaculture and food industries. Their rapid growth and adaptability create job opportunities, increase trade both domestically and internationally, encourage travel, and encourage leisure activities.
@@ -107,12 +107,11 @@ export const researchData2024 = [
     title: "COMPARATIVE ANALYSIS ON ANTIMITOTIC PROPERTY OF CURCUMA LONGA RHIZOME AND SAMANEA SAMAN LEAF EXTRACT USING ALLIUM CEPA ASSAY",
     publishedAt: 2024,
     researchId: "2024-007",
-    author: "SEGURA, EARL JAN L., AMBOY, PAULINE MAE M., FLORES, NICOLE FAYE S., LEYSO, MARY FRANCINE SNOW S., MADALOGDOG, JASMIN ANN A., ROBLES, ZHYRA M., VALENZUELA, KHEA MAE A.",
+    author: "EARL JAN L. SEGURA, PAULINE MAE M. AMBOY, NICOLE FAYE S. FLORES, MARY FRANCINE SNOW S. LEYSO, JASMIN ANN A. MADALOGDOG, ZHYRA M. ROBLES, KHEA MAE A. VALENZUELA",
     citation: "Segura, E. J. L., Amboy, P. M. M., Flores, N. F. S., Leyso, M. F. S. S., Madalogdog, J. A. A., Robles, Z. M., Valenzuela, K. M. A. (2024). COMPARATIVE ANALYSIS ON ANTIMITOTIC PROPERTY OF CURCUMA LONGA RHIZOME AND SAMANEA SAMAN LEAF EXTRACT USING ALLIUM CEPA ASSAY.",
     abstract: "Investigated antimitotic properties using the Allium cepa (onion) assay. Samanea saman (Rain Tree) leaf extract was found to be significantly more effective in inhibiting root growth compared to Curcuma longa (Turmeric).",
     author:
-      "SEGURA, EARL JAN L., AMBOY, PAULINE MAE M., FLORES, NICOLE FAYE S., LEYSO, MARY FRANCINE SNOW S., MADALOGDOG, JASMIN ANN A., ROBLES, ZHYRA M., VALENZUELA, KHEA MAE A.",
-    abstract:`
+      "EARL JAN L. SEGURA, PAULINE MAE M. AMBOY, NICOLE FAYE S. FLORES, MARY FRANCINE SNOW S. LEYSO, JASMIN ANN A. MADALOGDOG, ZHYRA M. ROBLES, KHEA MAE A. VALENZUELA",
       As the third leading cause of death in the Philippines, cancer is a major global public health problem. It's a well-known disease that may start practically anywhere in the body and spread to other organs when unchecked cell development occurs (Saboo et al., 2014). 
     
       This study aims to determine the antimitotic activity of Curcuma longa rhizome and Samanea saman leaf extract using Allium cepa assay. Curcuma longa rhizomes and Samanea saman leaves were both extracted using ethanol extraction. Rotary evaporation was employed to extract the extract's solvent. In formulating the treatments, 3 grams of plant extract were measured, mixed with 1 milliliter of ethanol and finally mixed with distilled water until it reaches the total amount of 300 mL. The Allium cepa then submerged to each treatment of Curcuma longa rhizome and Samanea saman leaf extract. The change in root length of the onion were measured after 3 days of submerging it to the treatments. The results were statistically analyzed using ANOVA and Scheffe Test.
@@ -124,11 +123,11 @@ export const researchData2024 = [
     title: "Antipyretic Potential of Kara-Kamote (Ipomoea triloba) Aqueous Solution to White Mice (Mus musculus)",
     publishedAt: 2024,
     researchId: "2024-008",
-    author: "BORDON, FINNYROSE BERNADETTE B., BRILLO, JEO V., CABARLES, RAINNIER BENEDICT E., DOMINGUEZ, ARNEL ROSS FRANCIS A., MALCONTENTO, HANS CHRISTIAN M., PAGUIDIAN, ANGELA KRISTEN C., PIZ, FRENCH ALDRIN E., SANTISO, ANTHONY JOSH G.",
+    author: "FINNYROSE BERNADETTE B. BORDON, JEO V. BRILLO, RAINNIER BENEDICT E. CABARLES, ARNEL ROSS FRANCIS A. DOMINGUEZ, HANS CHRISTIAN M. MALCONTENTO, ANGELA KRISTEN C. PAGUIDIAN, FRENCH ALDRIN E. PIZ, ANTHONY JOSH G. SANTISO",
     citation: "Bordon, F. B. B., Brillo, J., Cabarles, R. B. E., Dominguez, A. R. F. A., Malcontento, H. C. M., Paguidian, A. K. C., Piz, F. A. E., Santiso, A. J. G. (2024). Antipyretic Potential of Kara-Kamote (Ipomoea triloba) Aqueous Solution to White Mice (Mus musculus).",
     abstract: "Tested the antipyretic potential of Kara-kamote aqueous solution on mice. The 100mg/kg concentration showed the highest mean temperature decrease, though statistically comparable to the control group.",
     author:
-      "BORDON, FINNYROSE BERNADETTE B., BRILLO, JEO V., CABARLES, RAINNIER BENEDICT E., DOMINGUEZ, ARNEL ROSS FRANCIS A., MALCONTENTO, HANS CHRISTIAN M., PAGUIDIAN, ANGELA KRISTEN C., PIZ, FRENCH ALDRIN E., SANTISO, ANTHONY JOSH G.",
+      "FINNYROSE BERNADETTE B. BORDON, JEO V. BRILLO, RAINNIER BENEDICT E. CABARLES, ARNEL ROSS FRANCIS A. DOMINGUEZ, HANS CHRISTIAN M. MALCONTENTO, ANGELA KRISTEN C. PAGUIDIAN, FRENCH ALDRIN E. PIZ, ANTHONY JOSH G. SANTISO",
     abstract:`
       Fever is also known as hyperthermia, pyrexia, or elevated temperature. It describes a body temperature that's higher than normal. Fever can affect children and adults. Natural remedies derived from medicinal plants have been explored as potential sources of antipyretic agents.
     
@@ -158,11 +157,11 @@ export const researchData2024 = [
     title: "Marigold (Tagetes erecta) Flower as a Replacement feeds on the Growth of Tilapia fingerlings",
     publishedAt: 2024,
     researchId: "2024-010",
-    author: "ASCENCIO, JOHN MARTIN, BIBAL, JESSA MAE G., CALIBJO, ALBERT MATTHEW V., FORRO, FRANZ DAVE R., MADERO, NJ C., MONTUYA, JOHN ZANDER A., PANIZA, GELLOURD L.",
+    author: "JOHN MARTIN ASENCIO, JESSA MAE G., CALIBJO, ALBERT MATTHEW V., FORRO, FRANZ DAVE R., MADERO, NJ C., MONTUYA, JOHN ZANDER A., PANIZA, GELLOURD L.",
     citation: "Ascencio, J. M., Bibal, J. M. G., Calibjo, A. M., Forro, F. D. R., Madero, N. C., Montuya, J. Z. A., Paniza, G. L. (2024). Marigold (Tagetes erecta) Flower as a Replacement feeds on the Growth of Tilapia fingerlings.",
     abstract: "Determined the effect of Marigold flower as replacement feed for Tilapia. ANOVA revealed that the weight gain from Marigold treatments was not significantly different from commercial feed, suggesting its potential as a substitute.",
     author:
-      "ASCENCIO, JOHN MARTIN, BIBAL, JESSA MAE G., CALIBJO, ALBERT MATTHEW V., FORRO, FRANZ DAVE R., MADERO, NJ C., MONTUYA, JOHN ZANDER A., PANIZA, GELLOURD L.",
+      "JOHN MARTIN ASENCIO, JESSA MAE G., CALIBJO, ALBERT MATTHEW V., FORRO, FRANZ DAVE R., MADERO, NJ C., MONTUYA, JOHN ZANDER A., PANIZA, GELLOURD L.",
     abstract:`
       Inflation caused the commercial feed price to rise and it reduces the profit margin in which can greatly affect local farmers. This study aimed to determine the effect of Marigold flower as a Replacement feed on the growth of Tilapia fingerlings. The Marigold flower was oven dry and finely grind using blendered and pestle and mortar. A total of 180 tilapia fingerlings was utilized and was divided into nine ponds equally. A random sample of five tilapia was weighed weekly. The average weight gain(g) of tilapia fingerlings is analyzed using ANOVA. 
                   
@@ -176,11 +175,11 @@ export const researchData2024 = [
     title: "Zingiber zerumbet: AN UNDERUTILIZED PLANT AS ORGANIC PESTICIDE AGAINST Drosophila melanogaster",
     publishedAt: 2024,
     researchId: "2024-011",
-    author: "CASTOR, ZHEA MARIE C., IBAÑEZ, KAIR IVAN RAE C., INDICAR, KARMELLA A., MANIMBAYAN, JUSTINE M., PADILLA, JESSIE V., SUEDE, ANGEL GRACE P., TAÑEDO, JANELLE R.",
+    author: "ZHEA MARIE C. CASTOR, KAIR IVAN RAE C. IBAÑEZ, KARMELLA A. INDICAR, JUSTINE M. MANIMBAYAN, JESSIE V. PADILLA, ANGEL GRACE P. SUEDE, JANELLE R. TAÑEDO",
     citation: "Castor, Z. M. C., Ibañez, K. I. R. C., Indicar, K. A., Manimbayan, J. M., Padilla, J., Suede, A. G. P., Tañedo, J. R. (2024). Zingiber zerumbet: AN UNDERUTILIZED PLANT AS ORGANIC PESTICIDE AGAINST Drosophila melanogaster.",
     abstract: "Tested bitter ginger rhizome extract as an organic pesticide against fruit flies. Results showed that both 100% and 50% extracts were effective, with no significant difference found compared to commercial pesticides.",
     author:
-      "CASTOR, ZHEA MARIE C., IBAÑEZ, KAIR IVAN RAE C., INDICAR, KARMELLA A., MANIMBAYAN, JUSTINE M., PADILLA, JESSIE V., SUEDE, ANGEL GRACE P., TAÑEDO, JANELLE R.",
+      "ZHEA MARIE C. CASTOR, KAIR IVAN RAE C. IBAÑEZ, KARMELLA A. INDICAR, JUSTINE M. MANIMBAYAN, JESSIE V. PADILLA, ANGEL GRACE P. SUEDE, JANELLE R. TAÑEDO",
     abstract:`
       Zingiber zerumbet or bitter ginger is an underutilized plant with many unexplored potentials. This plant contains a number of normally occurring substances such as terpenoids, and phenolic compounds that are thought to be effective pest repellents. Fruit fly infestations are one of the most common problems in the community. This study aimed to provide an eco-friendly solution to fly infestation. Zingiber zerumbet rhizomes were gathered, washed, and dried, while the fruit flies were collected and cultured for 14 days. The fruit flies were then transferred into 12 containers, each filled with three fruit flies. Four treatments were then formulated, one ml of each treatment was sprayed into each container.
     
@@ -193,12 +192,12 @@ export const researchData2024 = [
     title: "DETERMINATION OF VITAMIN C FROM Spondias pinnata AND Tetrastigma harmandii LEAVES USING IODOMETRY",
     publishedAt: 2024,
     researchId: "2024-012",
-    author: "GALINDO, RHEA KATE I., BEBA, LYRA BELLE, VIVA, MA. FIONA AVELOR R., ARELLANO, JOAN C., MONTUYA, NISHA MARIE B., NACHON, AIRA V., ROBLES, HANNA FAITH V.",
+    author: "RHEA KATE I. GALINDO, LYRA BELLE BEBA, MA. FIONA AVELOR R. VIVA, JOAN C. ARELLANO, NISHA MARIE B. MONTUYA, AIRA V. NACHON, HANNA FAITH V. ROBLES",
     citation: "Galindo, R. K. I., Beba, L. B., Viva, M. F. A. R., Arellano, J. C., Montuya, N. M. B., Nachon, A., Robles, H. F. (2024). DETERMINATION OF VITAMIN C FROM Spondias pinnata AND Tetrastigma harmandii LEAVES USING IODOMETRY.",
     abstract: "Used iodometric titration to compare Vitamin C content. Results showed Spondias pinnata leaves contain significantly higher Vitamin C (4.9 mg/100g) compared to Tetrastigma harmandii (2.8 mg/100g).",
   }
     author:
-      "GALINDO, RHEA KATE I., BEBA, LYRA BELLE, VIVA, MA. FIONA AVELOR R., ARELLANO, JOAN C., MONTUYA, NISHA MARIE B., NACHON, AIRA V., ROBLES, HANNA FAITH V.",
+      "RHEA KATE I. GALINDO, LYRA BELLE BEBA, MA. FIONA AVELOR R. VIVA, JOAN C. ARELLANO, NISHA MARIE B. MONTUYA, AIRA V. NACHON, HANNA FAITH V. ROBLES",
     abstract:`
       This study aimed to determine the vitamin C content of Spondias pinnata and Tetrastigma harmandii leaves. The leaf samples were washed with distilled water and pat-dried until they could be extracted using a blender and grounded using a mortar and pestle. It was filtered through cheesecloth to obtain the pure extract. Each Spondias pinnata and Tetrastigma harmandii leaf extract had three replications, where each was put in a conical flask and titrated. The titration method and calculations were based on the University of Canterbury, and the significant difference was determined using t-Test: Two-Sample Assuming Unequal Variances. Results revealed that Spondias pinnata leaves have a higher vitamin C content, which is 4.9 mg/100 g, than Tetrastigma harmandii leaves (2.8 mg/100g). The vitamin C content of the Spondias pinnata leaves is significantly higher than the Tetrastigma harmandii leaves based on the results of t-Test.
     
@@ -212,7 +211,7 @@ export const researchData2024 = [
     "ANTI-MICROBIAL ACTIVITY OF Averrhoa carambola (GARANGAN) LEAF EXTRACT ON Pseudomonas spp.",
     publishedAt: 2024,
     author:
-    "DIONGLAY, FLOEY M., LOPEZ, ERL ANDREI V., RABAGO, JAMES BERNARD S., AGRETE, JEANIE ROSE B., CASTELLANO, KASSANDRA THERESE T., MARCON, MA. JULIA ZONET, SAUL, CLAIRE IRISH G.",
+    "FLOEY M. DIONGLAY, ERL ANDREI V. LOPEZ, JAMES BERNARD S. RABAGO, JEANIE ROSE B. AGRETE, KASSANDRA THERESE T. CASTELLANO, MA. JULIA ZONET MARCON, CLAIRE IRISH G. SAUL",
     abstract:`
       This study was conducted to determine the effectiveness of Garangan (Averrhoa carambola) leaf extract as an antimicrobial on Pseudomonas spp.
 

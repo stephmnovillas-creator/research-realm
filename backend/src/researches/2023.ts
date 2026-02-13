@@ -96,24 +96,16 @@ export const researchData2023 = [
     author: "RHEA SHANE P. CUAMBOT, DAN LOYD A. BECODO, TRISHA MARIE BEDAURIE, ERIKA MAE M. ALVIAR, CHELLEAN JOY A. DURAN, NOELA JANE P. FAJARDO, GUINEVERE A. CERENECHE, PEARL JOY M. AZUCENA",
     citation: "Cuambot, D. L. A. B. R. S. P., Bedaurie, E. M. M. A. T. M., Duran, N. J. P. F. C. J. A., Cereneche, P. J. M. A. G. A. (2023). INSECTICIDAL EFFECT OF APOK-APOK (Ageratum conyzoides) LEAF EXTRACTION ALBINO FRUIT FLY (Drosophila melanogaster).",
     abstract: "Tested Ageratum conyzoides leaf extract against fruit flies. Only the 50 mg/mL concentration showed insecticidal effects after one hour. Significant differences were noted compared to commercial killers.",
-  },
-  {
-    title: "ANTI-MICROBIAL ACTIVITY OF Averrhoa carambola (GARANGAN) LEAF EXTRACT ON Pseudomonas spp.",
-    publishedAt: 2023,
-    researchId: "2023-008",
-    author: "DIONGLAY, FLOEY JOHN M., LOPEZ, ERL ANDREI V., RABAGO, JAMES BERNARD S., AGRETE, JEANIE ROSE B., CASTELLANO, KASSANDRA THERESE T., MARCON, MA. JULIA ZONET, SAUL, CLAIRE IRISH G.",
-    citation: "Dionglay, F. J. M., Lopez, E. A., Rabago, J. B. S., Agrete, J. R. B., Castellano, K. T. T., Marcon, M. J. Z., Saul, C. I. G. (2023). ANTI-MICROBIAL ACTIVITY OF Averrhoa carambola (GARANGAN) LEAF EXTRACT ON Pseudomonas spp.",
-    abstract: "Tested Garangan leaf extract using agar-well diffusion. All experimental treatments formed zones of inhibition against Pseudomonas spp. higher than the negative control, indicating potential antimicrobial activity.",
-    author:
+    author: 
       "RHEA SHANE P. CUAMBOT, DAN LOYD A. BECODO, TRISHA MARIE BEDAURIE, ERIKA MAE M. ALVIAR, CHELLEAN JOY A. DURAN, NOELA JANE P. FAJARDO, GUINEVERE A. CERENECHE, PEARL JOY M. AZUCENA",
     abstract:`
       Fruit fly is a small fly that can be found near rotten fruits. They carry bacteria like salmonella, E. Listeria and E. coli which can cause food poisoning. These insects directly harm fruits and vegetables by puncturing them to lay and develop their larvae. Therefore, this study aims to determine the insecticidal effect of Ageratum conyzoides against Drosophila melanogaster. Experimental method was employed using Completely Randomized Design (CRD) with treatments assigned via lottery method. One hundred-fifty Drosophila melanogaster were baited at and were cultured. Meanwhile, three kilograms of Ageratum conyzoides were air dried for one month and were powderized using an electric blender. The powdered leaves were immersed in methanol for 24 hours and were shaken and filtered using Whatman filter paper no. 1. The filtrate has undergone rotary evaporation. Fifteen beakers containing ten adult Drosophila melanogaster with standard food were prepared and sprayed with five treatments mainly: 50, 25 and 10 mg/mL of Ageratum conyzoides leaf extract, distilled water as negative control and Baygon Multi-insect Killer as positive control and it was replicated three times. The number of dead Drosophila melanogaster was recorded after one hour application of treatments. Results showed that among the different concentrations, only treatment with 50 mg/mL of Ageratum conyzoides leaf extract has an insecticidal effect on Drosophila melanogaster one hour after application. However, there is a significant difference in the insecticidal effect among the different concentrations of Ageratum conyzoides leaf extract, as compared to Baygon Multi-Insect Killer (positive control) with the highest insecticidal effect on the percent mortality of Drosophila melanogaster one hour after application of treatments.
-    `,
+    `,   
   },
   {
     title: "ANTIPYRETIC ACTIVITY OF PANSIT-PANSITAN (Peperomia pellucida) AND FRINGED SPIDERFLOWER (Cleome rutidosperma) LEAF EXTRACTS ON WHITE MICE (Mus musculus)",
     publishedAt: 2023,
-    researchId: "2023-009",
+    researchId: "2023-008",
     author: "AINA YSABEL L. VELONERO, BERNICE CARMELLE SONZA, DUANE RYANN P. MONTES, FRANCINE GABRIELLE S. LUCES, JAN MARGAUX P. PERUCHO, ALLEN KARL L. GARRINO, ARABELLA GRACE A. SILVIAS, BIANCA ISABELLA L. VALLE",
     citation: "Velonero, B. C. S. A. Y. L., Montes, F. G. S. L. D. R. P., Perucho, A. K. L. G. J. M. P., Silvias, B. I. L. V. A. G. A. (2023). ANTIPYRETIC ACTIVITY OF PANSIT-PANSITAN (Peperomia pellucida) AND FRINGED SPIDERFLOWER (Cleome rutidosperma) LEAF EXTRACTS ON WHITE MICE (Mus musculus).",
     abstract: "Aimed to determine antipyretic activity on pyrexia-induced white mice. Fringed Spiderflower showed the highest mean decrease in temperature, followed by Pansit-pansitan, though results were not significantly different from the control.",
@@ -126,7 +118,7 @@ export const researchData2023 = [
   {
     title: "UTILIZATION OF DIFFERENT AGRICULTURAL WASTES (MAHOGANY SAWDUST, PEANUT SHELLS, AND BAMBOO FIBER WASTES) AS NATURAL SORBENT PILLOWS ON OIL SPILL",
     publishedAt: 2023,
-    researchId: "2023-010",
+    researchId: "2023-009",
     author: "CAMILLE JOY S. MANDARIO, STEPHANIE MAE F. RETERACION, JAMES BRYAN S. RABAGO, JANINE KATE M. PORTILLO, CLARISSA C. RICAFRENTE, SAMANTHA JOY P. ROSANO, LOVE MARIE C. MORATA, JOSE ISAAC M. MENDOZA",
     citation: "Mandario, S. M. F. R. C. J. S., Rabago, J. K. M. P. J. B. S., Ricafrente, S. J. P. R. C. C., Morata, J. I. M. M. L. M. C. (2023). UTILIZATION OF DIFFERENT AGRICULTURAL WASTES (MAHOGANY SAWDUST, PEANUT SHELLS, AND BAMBOO FIBER WASTES) AS NATURAL SORBENT PILLOWS ON OIL SPILL.",
     abstract: "Tested agricultural wastes as natural sorbents for oil spills. While Bamboo Fiber Wastes had the highest mean sorption capacity, ANOVA showed no significant difference, suggesting all materials are comparable.",
@@ -145,7 +137,7 @@ export const researchData2023 = [
   {
     title: "EFFECT OF DIETARY INCLUSION OF ACAPULCO LEAVES (Senna alata) ON GROWTH PERFORMANCE OF NATIVE CHICKENS (Gallus gallus domesticus)",
     publishedAt: 2023,
-    researchId: "2023-011",
+    researchId: "2023-010",
     author: "RIZANY EMVER G. BOGADOR, RHYZA MARIE B. HERVAS, FRANCINE MAE D. BEGAYO, MARY BIANCE B. BALDEVISO, LYAN MARIE F. APISTAR, RONIEL A. GARETE, PAULA ISABELLE B. LIBUTAQUE, CHRISTINE JOY M. CERIGO",
     citation: "Bogador, R. M. B. H. R. E. G., Begayo, M. B. B. B. F. M. D., Apistar, R. A. G. L. M. F., Libutaque, C. J. M. C. P. I. B. (2023). EFFECT OF DIETARY INCLUSION OF ACAPULCO LEAVES (Senna alata) ON GROWTH PERFORMANCE OF NATIVE CHICKENS (Gallus gallus domesticus).",
     abstract: "Evaluated dietary inclusion of Acapulco leaves on growth. Results showed Treatment B had significantly higher feed conversion efficiency, though Treatment A (control) had higher voluntary feed intake and weight gain.",
@@ -162,7 +154,7 @@ export const researchData2023 = [
   {
     title: "AUTOMATIC WATER LEVEL SENSOR",
     publishedAt: 2023,
-    researchId: "2023-012",
+    researchId: "2023-011",
     author: "BLITZKRIEG ZITHER BARRIOS, KELMER ETHAN BRAVIO, ALJOHN CANOY, CARL JOHN COOPERA, GERALD DILAG, PHILINE GRACE AGUIRRE, RINAMAE EMBIADO, LHEA JOY INEFABLE",
     citation: "Barrios, K. E. B. B. Z., Canoy, C. J. C. A., Dilag, P. G. A. G., Embiado, L. J. I. R. (2023). AUTOMATIC WATER LEVEL SENSOR.",
     abstract: "Evaluated reliability of an automatic water level sensor for aquaculture. 50 trials showed a 91.7% reliability rate. High potential for optimizing fish growth and minimizing water wastage.",
@@ -179,7 +171,7 @@ export const researchData2023 = [
   {
     title: "ANTIPROLIFERATIVE ACTIVITY OF JUTE (Corchorus olitorius) LEAF EXTRACT ON YEAST (Saccharomyces cerevisiae)",
     publishedAt: 2023,
-    researchId: "2023-013",
+    researchId: "2023-012",
     author: "LARA MAE DELOS REYES, JUSTIN JONES BREY, SEAN KAIZER FRIGILLANO, REAN ALICANTE, CALVIN JOHN FORTALEZA, ELIZABETH CENTINA, MAE JUNE GALINDO, ALLEN GRACE CARTERA",
     citation: "Reyes, J. J. B. L. M. D., Frigillano, R. A. S. K., Fortaleza, E. C. C. J., Galindo, A. G. C. M. J. (2023). ANTIPROLIFERATIVE ACTIVITY OF JUTE (Corchorus olitorius) LEAF EXTRACT ON YEAST (Saccharomyces cerevisiae).",
     abstract: "Determined antiproliferative potential of methanolic jute leaf extract. Treatment 3 (1000 ug/ml) showed the lowest cell viability, concluding it has the highest antiproliferative activity.",
@@ -192,7 +184,7 @@ export const researchData2023 = [
   {
     title: "ACCEPTABILITY OF TAHONG (Perna viridis) SHELLS AND ACHIOTE (Bixa orellana) SEED EXTRACT AS TAILOR'S CHALK",
     publishedAt: 2023,
-    researchId: "2023-014",
+    researchId: "2023-013",
     author: "FEBRUALYN SALVE C. TORMON, CLAUDE MONETTE B. GUBAGARAS, MARY GRACE M. SUNIO, JOHN RICO B. ANACAN, KARYLLE H. GUILAMO, MARIBETH M. LLADO, JOHN PAUL F. DERECHO",
     citation: "Tormon, F. S. C., Gubagaras, C. M. B., Sunio, M. G. M., Anacan, J. R. B., Guilamo, K. H., Llado, M. M., Derecho, J. P. F. (2023). ACCEPTABILITY OF TAHONG (Perna viridis) SHELLS AND ACHIOTE (Bixa orellana) SEED EXTRACT AS TAILOR'S CHALK.",
     abstract: "Determined acceptability of pulverized Tahong shells and Achiote seed extract as tailor's chalk. Survey results showed acceptability in texture and ease of marking, with no significant difference among experimental treatments.",
@@ -205,7 +197,7 @@ export const researchData2023 = [
   {
     title: "ANTHELMINTIC ACTIVITY OF POWDERED TAMARIND (Tamarindus indica) SEEDS AND OREGANO (Origanum vulgare) LEAVES ON NATIVE CHICKEN",
     publishedAt: 2023,
-    researchId: "2023-015",
+    researchId: "2023-014",
     author: "PRINCESS BEA T. ALINSOG, MARY ANN B. JUCABAN, TRISCIA KATE C. LANDA, CHELSEA EMMANUELLE D. LORCA, SOFIA THERESSE B. NADALES, JOAN RUSS T. PALOMERO, KRISTY ANGELIE M. SALAZAR, HUNNAH KAYE M. SOLIVA",
     citation: "Alinsog, M. A. B. J. P. B. T., Landa, C. E. D. L. T. K. C., Nadales, J. R. T. P. S. T. B., Salazar, H. K. M. S. K. A. M. (2023). ANTHELMINTIC ACTIVITY OF POWDERED TAMARIND (Tamarindus indica) SEEDS AND OREGANO (Origanum vulgare) LEAVES ON NATIVE CHICKEN.",
     abstract: "Tested anthelmintic activity of tamarind seeds and oregano leaves on native chickens. ANOVA showed no significant difference among treatments, concluding both materials possess comparable anthelmintic activity.",
@@ -226,7 +218,7 @@ export const researchData2023 = [
   {
     title: "THE VALUE OF HEAT PRODUCED BY BIOGAS GENERATED FROM FARM WASTE VIA AN AEROBIC DIGESTION",
     publishedAt: 2023,
-    researchId: "2023-016",
+    researchId: "2023-015",
     author: "CARLA ANGELA F. HEREZO, MURIEL EZRI M. GUIJARNO, ARLENE MAY A. LINACERO, URIEL L. TIONGSON, FEBE SHAINE O. TRONCO, XIANELLE M. DOMINGUEZ, JOSHUA L. SOLACITO, JANREL M. BERBEGAL",
     citation: "Herezo, M. E. M. G. C. A. F., Linacero, U. L. T. A. M. A., Tronco, X. M. D. F. S. O., Solacito, J. M. B. J. L. (2023). THE VALUE OF HEAT PRODUCED BY BIOGAS GENERATED FROM FARM WASTE VIA AN AEROBIC DIGESTION.",
     abstract: "Determined calories produced by biogas from pig and cow dung. Results showed pig dung generated ~7252 calories and cow dung ~5108 calories. T-test revealed no significant difference, making them viable heating fuel alternatives.",
@@ -239,7 +231,7 @@ export const researchData2023 = [
   {
     title: "ANTIBACTERIAL EFFECT OF BAMBOO SHOOT (Bambusa blumeana) EXTRACT AGAINST STAPH (Staphylococcus aureus)",
     publishedAt: 2023,
-    researchId: "2023-017",
+    researchId: "2023-016",
     author: "JOHN VINCENT P. MAROMA, DENZEL KIM C. SISON, FRANZ EARL M. SUDARIO, THEA MARIE J. VILLAREAL, JOHN ROMNICK L. MORCO, KHAYLIN MONIQUE ANGELA M. LUZARITA, RHAY BENNARD R. MENDOZA, TREXAN V. SANICO",
     citation: "Maroma, D. K. C. S. J. V. P., Sudario, T. M. J. V. F. E. M., Morco, K. M. A. M. L. J. R. L., Mendoza, T. S. R. B. R. (2023). ANTIBACTERIAL EFFECT OF BAMBOO SHOOT (Bambusa blumeana) EXTRACT AGAINST STAPH (Staphylococcus aureus).",
     abstract: "Determined antibacterial effect using various concentrations. All treatments except negative control formed zones of inhibition. The 75% concentration showed the highest zone of inhibition against Staphylococcus aureus.",
@@ -256,7 +248,7 @@ export const researchData2023 = [
   {
     title: "Magallana bilineata (OYSTER) SHELLS AND ACETIC ACID (VINEGAR) FIRE RETARDANT SPRAY AS FIRE ASPHYXIATOR",
     publishedAt: 2023,
-    researchId: "2023-018",
+    researchId: "2023-017",
     author: "ASHLEY JUNE M. MONTALBAN, ALEA NICOLE C. FAJARDO, FRANCIS C. ROMALLOSA, LARA MAY S. MEDIODA, JEZYL R. SIMAURIO, JERGEN ATHEA Q. TITULAR, GHIA D. BERBEGAL",
     citation: "Montalban, A. J. M., Fajardo, A. N. C., Romallosa, F. C., Medioda, L. M. S., Simaurio, J. R., Titular, J. A. Q., Berbegal, G. D. (2023). Magallana bilineata (OYSTER) SHELLS AND ACETIC ACID (VINEGAR) FIRE RETARDANT SPRAY AS FIRE ASPHYXIATOR.",
     abstract: "Tested oyster shells and vinegar spray as a fire asphyxiator on Class A fires. T-test revealed no significant difference compared to commercial extinguishers, concluding the spray is an effective alternative.",
@@ -273,7 +265,7 @@ export const researchData2023 = [
   {
     title: "POLYHERNIC: A FORMULATED ORGANIC AND POLYHERBAL HAIR CONDITIONER",
     publishedAt: 2023,
-    researchId: "2023-019",
+    researchId: "2023-018",
     author: "MARIE C. MIRALLES, SHYRA B. CABUATAN, MEGAN E. TIONGSON, GRACE AMOR C. TEJING, KYTE FRANSCINE L. RIVERA, VINCE CYRON C. RENDAJE, TJAY C. LAS, PAUL DANIELLE B. VESTUIR",
     citation: "Miralles, S. B. C. M. C., Tiongson, G. A. C. T. M. E., Rivera, V. C. C. R. K. F. L., Las, P. D. B. V. T. C. (2023). POLYHERNIC: A FORMULATED ORGANIC AND POLYHERBAL HAIR CONDITIONER.",
     abstract: "Developed an organic polyherbal hair conditioner. T-test on human hair samples showed no significant difference compared to commercial conditioners in terms of smoothness, shine, and manageability.",
