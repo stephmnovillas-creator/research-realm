@@ -159,3 +159,24 @@ app.post("/archives", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+app.delete("/archives/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const research = await prisma.research.findUnique({
+    where: { id: Number(id) },
+  });
+
+  if (!research) {
+    return res.status(404).json({ error: "Research not found" });
+  }
+
+  const deletedResearch = await prisma.research.delete({
+    where: { id: Number(id) },
+  });
+
+  res.json({ 
+    message: "Research deleted successfully", 
+    deletedResearch 
+  });
+});

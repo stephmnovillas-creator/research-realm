@@ -1,7 +1,10 @@
-import { Link } from "@tanstack/react-router";
-import { ArrowLeft, Calendar, FileText, User, Download } from "lucide-react";
+import { Link, useRouter } from "@tanstack/react-router";
+import { ArrowLeft, Calendar, FileText, User, Download} from "lucide-react";
+import { useAuth } from "../lib/auth/auth.hooks";
 import type { ArchiveDetails } from "../types/Archive";
 import { getResearchPdfUrl } from "../lib/utils/pdf-url";
+import { DeleteConfirmationModal } from "./DeleteConfirmationModal";
+import { toast } from "sonner";
 
 interface ArchiveDetailsProps {
     research: ArchiveDetails;
@@ -10,18 +13,51 @@ interface ArchiveDetailsProps {
 export default function ArchiveDetailsComponent({
     research,
 }: ArchiveDetailsProps) {
+    const { isAdmin } = useAuth();
+    const router = useRouter();
     const pdfUrl = research.researchId ? getResearchPdfUrl(research.researchId) : null;
+
+    const handleDeleteConfirm = async () => {
+        try {
+            const response = await fetch(
+                `${import.meta.env.VITE_BACKEND_URL}/archives/${research.id}`,
+                {
+                    method: "DELETE",
+                }
+            );
+
+            if (response.ok) {
+                toast.success("Research deleted successfully");
+                // Navigate to home page after deletion
+                await router.navigate({ to: "/" });
+            } else {
+                toast.error("Failed to delete research");
+            }
+        } catch (error) {
+            console.error("Delete error:", error);
+            toast.error("Error deleting research");
+        }
+    };
 
     return (
         <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-            {/* Back Button */}
-            <Link
-                to=".."
-                className="mb-8 inline-flex items-center gap-2 text-[#7a9b76] font-medium transition-colors hover:text-[#6a8b66]"
-            >
-                <ArrowLeft className="w-5 h-5" />
-                Back to Archives
-            </Link>
+            {/* Back Button and Delete Button */}
+            <div className="mb-8 flex justify-between items-center">
+                <Link
+                    to=".."
+                    className="inline-flex items-center gap-2 text-[#7a9b76] font-medium transition-colors hover:text-[#6a8b66]"
+                >
+                    <ArrowLeft className="w-5 h-5" />
+                    Back to Archives
+                </Link>
+                {isAdmin && (
+                    <DeleteConfirmationModal
+                        title={research.title}
+                        researchDate={research.publishedAt}
+                        onConfirm={handleDeleteConfirm}
+                    />
+                )}
+            </div>
 
             {/* research Header */}
             <div className="mb-8 rounded-xl bg-white p-6 shadow-sm sm:p-8">
