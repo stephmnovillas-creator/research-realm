@@ -225,8 +225,8 @@ export const researchData2018: ResearchSeedEntry[] = [
     title: "ANTIBACTERIAL EFFECT OF SINAW SINAW (Peperomia pellucida) LEAF EXTRACT ON Staphylococcus aureus",
     publishedAt: 2018,
     researchId: "2018-017",
-    author: "KATRINA ANN L. DELA TORRE, SIERRA MAY M. BABIARTE",
-    citation: "Dela Torre, K. A. L., Babiarte, S. M. M. (2018). ANTIBACTERIAL EFFECT OF SINAW SINAW (Peperomia pellucida) LEAF EXTRACT ON Staphylococcus aureus.",
+    author: "KATRINA ANN L. DELA TORRE, SIERRA MAY M. BABIARTE, HANNAH MAE F. TANDUGON",
+    citation: "Dela Torre, K. A. L., Babiarte, S. M. M., Tandugon, H. M. F. (2018). ANTIBACTERIAL EFFECT OF SINAW SINAW (Peperomia pellucida) LEAF EXTRACT ON Staphylococcus aureus.",
     abstract:`
       This study was conducted to determine the effectiveness of Sinaw sinaw (Peperomia pellucida) leaf extract as an antibacterial against Staphylococcus aureus. The study was conducted at the Central Laboratory of West Visayas State University at La Paz, Iloilo on January 6, 2018.
     
