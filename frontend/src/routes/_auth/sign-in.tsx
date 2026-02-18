@@ -1,6 +1,6 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { CreditCard, Lock } from "lucide-react";
-import { useSignInForm, sanitizeLrn } from "@/lib/forms/authForms";
+import { sanitizeLrn, useSignInForm } from "@/lib/forms/authForms";
 import { useAuth } from "../../lib/auth/auth.hooks";
 
 export const Route = createFileRoute("/_auth/sign-in")({
@@ -16,8 +16,12 @@ function RouteComponent() {
 		<div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4 py-12">
 			<div className="w-full max-w-md">
 				<div className="text-center mb-12">
-					<h1 className="text-6xl font-bold text-gray-900 mb-4">Welcome Back</h1>
-					<p className="text-2xl text-gray-600">Sign in to access research archives</p>
+					<h1 className="text-6xl font-bold text-gray-900 mb-4">
+						Welcome Back
+					</h1>
+					<p className="text-2xl text-gray-600">
+						Sign in to access research archives
+					</p>
 				</div>
 
 				<form.AppForm>
@@ -33,7 +37,9 @@ function RouteComponent() {
 							{(submitError) =>
 								typeof submitError === "string" ? (
 									<div className="bg-red-50 border border-red-200 rounded-lg p-4">
-										<p className="text-red-700 text-sm font-medium">{submitError}</p>
+										<p className="text-red-700 text-sm font-medium">
+											{submitError}
+										</p>
 									</div>
 								) : null
 							}
@@ -64,24 +70,6 @@ function RouteComponent() {
 							)}
 						</form.AppField>
 
-						<form.AppField name="remember">
-							{(field) => (
-								<div className="flex items-center">
-									<input
-										id="remember"
-										type="checkbox"
-										checked={Boolean(field.state.value)}
-										onChange={(event) => field.handleChange(event.currentTarget.checked)}
-										onBlur={field.handleBlur}
-										className="w-4 h-4 rounded border-gray-300 text-[#7a9b76] focus:ring-[#7a9b76] cursor-pointer"
-									/>
-									<label htmlFor="remember" className="ml-2 text-sm text-gray-600 cursor-pointer">
-										Remember me
-									</label>
-								</div>
-							)}
-						</form.AppField>
-
 						<form.FormSubmitButton
 							label="Sign In"
 							submittingLabel="Signing in..."
@@ -93,7 +81,9 @@ function RouteComponent() {
 								<div className="w-full border-t border-gray-300"></div>
 							</div>
 							<div className="relative flex justify-center text-sm">
-								<span className="px-2 bg-white text-gray-500">Don't have an account?</span>
+								<span className="px-2 bg-white text-gray-500">
+									Don't have an account?
+								</span>
 							</div>
 						</div>
 
@@ -104,12 +94,6 @@ function RouteComponent() {
 						>
 							Create Account
 						</button>
-
-						<div className="text-center">
-							<button type="button" className="text-sm text-[#7a9b76] hover:underline">
-								Forgot password?
-							</button>
-						</div>
 					</form>
 				</form.AppForm>
 

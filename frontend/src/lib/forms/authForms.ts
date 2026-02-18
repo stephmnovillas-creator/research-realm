@@ -22,7 +22,6 @@ const signInSchema = z.object({
 			message: "LRN must be exactly 12 digits.",
 		}),
 	password: z.string().trim().min(1, "Password is required."),
-	remember: z.boolean(),
 });
 
 const signUpSchema = z
@@ -60,7 +59,6 @@ export function useSignInForm({ login }: AuthHookParams) {
 		defaultValues: {
 			lrn: "",
 			password: "",
-			remember: false,
 		} as SignInFormValues,
 		validators: {
 			onSubmit: ({ value }): string | undefined => {
