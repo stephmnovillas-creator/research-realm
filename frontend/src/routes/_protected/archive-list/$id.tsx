@@ -1,13 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import ArchiveDetailsComponent from "../../../components/ArchiveDetailsComponent";
-import { archiveDetailsQueryOptions } from "../../../lib/api/queries/archives.queries";
+import {
+	archiveDetailsQueryOptions,
+	archiveFileStatusQueryOptions,
+} from "../../../lib/api/queries/archives.queries";
 
 export const Route = createFileRoute("/_protected/archive-list/$id")({
 	component: RouteComponent,
 
-	loader: ({ context, params }) => {
-		context.queryClient.ensureQueryData(archiveDetailsQueryOptions(params.id));
+	loader: async ({ context, params }) => {
+		await Promise.all([
+			context.queryClient.ensureQueryData(
+				archiveDetailsQueryOptions(params.id),
+			),
+			context.queryClient.ensureQueryData(
+				archiveFileStatusQueryOptions(params.id),
+			),
+		]);
 	},
 	errorComponent: () => <div>Failed to load archives.</div>,
 });
@@ -33,7 +43,9 @@ function RouteComponent() {
 	if (!data) {
 		return (
 			<div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-				<div className="rounded-xl bg-white p-8 text-gray-600 shadow-sm">No data found.</div>
+				<div className="rounded-xl bg-white p-8 text-gray-600 shadow-sm">
+					No data found.
+				</div>
 			</div>
 		);
 	}
