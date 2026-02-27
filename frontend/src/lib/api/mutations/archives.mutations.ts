@@ -13,3 +13,14 @@ export const createResearchMutationOptions = mutationOptions({
     });
   },
 });
+
+/**
+ * Mutation options for deleting a Research by id.
+ */
+export const deleteResearchMutationOptions = mutationOptions({
+  mutationFn: async (researchId: number) => {
+    return apiFetch(`/archives/${researchId}`, {
+      method: "DELETE",
+    });
+  },
+});

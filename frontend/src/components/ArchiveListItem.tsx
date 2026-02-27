@@ -1,4 +1,8 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
+import { toast } from "sonner";
+import { deleteResearchMutationOptions } from "../lib/api/mutations/archives.mutations";
+import { useAuth } from "../lib/auth/auth.hooks";
 import type { ArchivePaper } from "../types/Archive";
 
 interface ArchiveListItemProps {
@@ -10,6 +14,32 @@ export default function ArchiveListItem({
 	paper,
 	index,
 }: ArchiveListItemProps) {
+	const queryClient = useQueryClient();
+	const { isAdmin } = useAuth();
+	const { mutateAsync: deleteResearch, isPending: isDeleting } = useMutation(
+		deleteResearchMutationOptions,
+	);
+
+	const handleDelete = async () => {
+		const shouldDelete = window.confirm(
+			`Delete "${paper.title}" and its PDF file? This cannot be undone.`,
+		);
+
+		if (!shouldDelete) {
+			return;
+		}
+
+		try {
+			await deleteResearch(paper.id);
+			await queryClient.invalidateQueries({ queryKey: ["researchList"] });
+			toast.success("Research deleted successfully.");
+		} catch (error) {
+			toast.error(
+				error instanceof Error ? error.message : "Failed to delete research.",
+			);
+		}
+	};
+
 	return (
 		<tr
 			className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${
@@ -29,6 +59,16 @@ export default function ArchiveListItem({
 							VIEW ABSTRACT
 						</button>
 					</Link>
+					{isAdmin && (
+						<button
+							type="button"
+							onClick={() => void handleDelete()}
+							disabled={isDeleting}
+							className="px-5 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors text-sm font-medium disabled:opacity-60"
+						>
+							{isDeleting ? "DELETING..." : "DELETE"}
+						</button>
+					)}
 				</div>
 			</td>
 		</tr>

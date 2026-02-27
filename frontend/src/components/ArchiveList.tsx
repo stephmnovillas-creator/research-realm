@@ -35,7 +35,9 @@ export default function ArchiveList({ papers }: ArchiveListProps) {
 						<th className="px-6 py-3 text-left font-semibold text-gray-700">
 							Author
 						</th>
-						<th className="px-6 py-3 text-center font-semibold text-gray-700"></th>
+						<th className="px-6 py-3 text-center font-semibold text-gray-700">
+							Actions
+						</th>
 					</tr>
 				</thead>
 				<tbody>

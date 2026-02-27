@@ -1,75 +1,82 @@
-import { supabase } from '../config/supabase';
-
-const BUCKET_NAME = 'research-files';
+import { getStoredToken } from "../auth/auth.storage";
+import { BACKEND_URL } from "../config/constants";
 
 export interface FileUploadResult {
   success: boolean;
-  url?: string;
   error?: string;
 }
 
 /**
- * Uploads a file to Supabase storage using the research ID as filename
+ * Uploads a research PDF to backend local storage.
  */
 export async function uploadResearchFile(
   file: File,
-  researchId: string,
+  archiveId: number,
 ): Promise<FileUploadResult> {
   try {
-    // Generate filename with research ID and .pdf extension
-    const fileName = `${researchId}.pdf`;
+    const token = getStoredToken();
+    const response = await fetch(`${BACKEND_URL}/archives/${archiveId}/file`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/pdf",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: file,
+    });
 
-    // Upload file to Supabase storage
-    const {error } = await supabase.storage
-      .from(BUCKET_NAME)
-      .upload(fileName, file, {
-        cacheControl: '3600',
-        upsert: true, // Replaces if file exists
-      });
+    if (!response.ok) {
+      const rawError = await response.text().catch(() => "Unknown error");
+      let parsedMessage = rawError;
 
-    if (error) {
-      console.error('Supabase upload error:', error);
+      try {
+        const parsed = JSON.parse(rawError) as {
+          error?: unknown;
+          message?: unknown;
+        };
+
+        if (typeof parsed.error === "string") {
+          parsedMessage = parsed.error;
+        } else if (typeof parsed.message === "string") {
+          parsedMessage = parsed.message;
+        }
+      } catch {
+        // Keep raw text when response is not JSON.
+      }
+
       return {
         success: false,
-        error: error.message,
+        error: `API Error (${response.status}): ${parsedMessage}`,
       };
     }
 
-    // Get public URL
-    const { data: urlData } = supabase.storage
-      .from(BUCKET_NAME)
-      .getPublicUrl(fileName);
-
-    return {
-      success: true,
-      url: urlData.publicUrl,
-    };
+    return { success: true };
   } catch (error) {
-    console.error('File upload error:', error);
+    console.error("File upload error:", error);
     return {
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
+      error: error instanceof Error ? error.message : "Unknown error",
     };
   }
 }
 
 /**
- * Deletes a research file from Supabase storage
+ * Deletes a research file from backend local storage by deleting the archive.
  */
 export async function deleteResearchFile(
-  researchId: string,
+  archiveId: number,
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    const fileName = `${researchId}.pdf`;
+    const token = getStoredToken();
+    const response = await fetch(`${BACKEND_URL}/archives/${archiveId}`, {
+      method: "DELETE",
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+    });
 
-    const { error } = await supabase.storage
-      .from(BUCKET_NAME)
-      .remove([fileName]);
-
-    if (error) {
+    if (!response.ok) {
+      const rawError = await response.text().catch(() => "Unknown error");
       return {
         success: false,
-        error: error.message,
+        error: rawError || "Failed to delete file",
       };
     }
 
@@ -77,7 +84,7 @@ export async function deleteResearchFile(
   } catch (error) {
     return {
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
+      error: error instanceof Error ? error.message : "Unknown error",
     };
   }
 }

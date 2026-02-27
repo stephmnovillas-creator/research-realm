@@ -25,13 +25,13 @@ export default function CreateResearch() {
       // First, create the research entry
       const createdResearch = (await mutateAsync(payload)) as Research;
 
-      // If file exists, upload it to Supabase
-      if (uploadedFile && createdResearch.researchId) {
+      // If file exists, upload it to backend local storage
+      if (uploadedFile) {
         try {
           setIsUploadingFile(true);
           const uploadResult: FileUploadResult = await uploadResearchFile(
             uploadedFile,
-            createdResearch.researchId,
+            createdResearch.id,
           );
 
           if (uploadResult.success) {

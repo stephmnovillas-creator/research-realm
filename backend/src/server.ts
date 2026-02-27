@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { constants as fsConstants } from "node:fs";
-import { access } from "node:fs/promises";
+import { access, mkdir, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import cors from "cors";
@@ -158,6 +158,87 @@ app.get("/archives/:id/file", async (req, res) => {
 	);
 
 	return res.sendFile(filePath);
+});
+
+app.post(
+	"/archives/:id/file",
+	express.raw({
+		type: ["application/pdf", "application/octet-stream"],
+		limit: "20mb",
+	}),
+	async (req, res) => {
+		const parsedId = Number(req.params.id);
+		if (!Number.isFinite(parsedId)) {
+			return res.status(400).json({ error: "Invalid archive id" });
+		}
+
+		const uploadedFile = req.body;
+		if (!Buffer.isBuffer(uploadedFile) || uploadedFile.length === 0) {
+			return res.status(400).json({ error: "PDF file is required" });
+		}
+
+		const research = await prisma.research.findUnique({
+			where: { id: parsedId },
+			select: {
+				id: true,
+				researchId: true,
+			},
+		});
+
+		if (!research || !research.researchId) {
+			return res.status(404).json({ error: "Research not found" });
+		}
+
+		await mkdir(RESEARCH_FILES_DIR, { recursive: true });
+		const filePath = resolveResearchFilePath(research.researchId);
+		await writeFile(filePath, uploadedFile);
+
+		return res.status(201).json({
+			message: "Research PDF uploaded successfully",
+			fileName: `${research.researchId}.pdf`,
+		});
+	},
+);
+
+app.delete("/archives/:id", async (req, res) => {
+	const parsedId = Number(req.params.id);
+	if (!Number.isFinite(parsedId)) {
+		return res.status(400).json({ error: "Invalid archive id" });
+	}
+
+	const research = await prisma.research.findUnique({
+		where: { id: parsedId },
+		select: {
+			id: true,
+			researchId: true,
+		},
+	});
+
+	if (!research) {
+		return res.status(404).json({ error: "Research not found" });
+	}
+
+	let deletedFile = false;
+
+	if (research.researchId) {
+		const filePath = resolveResearchFilePath(research.researchId);
+		const hasFile = await doesFileExist(filePath);
+
+		if (hasFile) {
+			await unlink(filePath);
+			deletedFile = true;
+		}
+	}
+
+	await prisma.research.delete({
+		where: { id: parsedId },
+	});
+
+	return res.json({
+		message: "Research deleted successfully",
+		deletedResearchId: parsedId,
+		deletedFile,
+	});
 });
 
 app.post("/archives", async (req, res) => {
